@@ -79,6 +79,7 @@
         "nanoid": "^3.3.11",
         "node-releases": "^2.0.19",
         "normalize-range": "^0.1.2",
+        "overlayscrollbars": "^2.12.0",
         "picocolors": "^1.1.1",
         "picomatch": "^4.0.3",
         "postcss-value-parser": "^4.2.0",
