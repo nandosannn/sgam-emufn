@@ -29,6 +29,7 @@
         "ansi-styles": "^4.3.0",
         "asynckit": "^0.4.0",
         "bootstrap": "^5.3.8",
+        "bootstrap-icons": "^1.13.1",
         "browserslist": "^4.25.3",
         "call-bind-apply-helpers": "^1.0.2",
         "caniuse-lite": "^1.0.30001736",
