@@ -3,7 +3,6 @@
 @php
 
 $menus = [
-    ['label' => 'Dashboard', 'url' => '#'],
     ['label' => 'Home', 'url' => '#']
 ]
 
