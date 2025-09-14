@@ -9,7 +9,7 @@ export default defineConfig({
         }),
     ],
     build: {
-        chunkSizeWarningLimit: 1000, // Aumenta limite de warning de tamanho
+        chunkSizeWarningLimit: 1000,
     },
     css: {
         preprocessorOptions: {
