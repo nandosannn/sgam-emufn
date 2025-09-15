@@ -8,15 +8,7 @@
         </div>
         <!-- /.register-logo -->
         <div class="card">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
             <div class="card-body register-card-body">
                 <p class="register-box-msg">Register a new membership</p>
                 <form action=" {{ route('register') }} " method="POST">
@@ -24,17 +16,29 @@
                     <div class="input-group mb-3">
                         <div class="input-group-text"><span class="bi bi-person"></span></div>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" />
-
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-                        <input type="email" name="email" class="form-control" placeholder="Email" />
-
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" />
+                        @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
-                        <input type="password" name="password" class="form-control" placeholder="Password" />
-
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" />
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="input-group mb-3">
