@@ -15,7 +15,7 @@
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-text"><span class="bi bi-person"></span></div>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" />
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" value="{{ old('name') }}" />
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -24,7 +24,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-text"><span class="bi bi-envelope"></span></div>
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" />
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}"/>
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -45,6 +45,11 @@
                         <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
                         <input type="password" name="password_confirmation" class="form-control"
                             placeholder="Password Confirmation" />
+                        @error('password_confirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="d-grid gap-2">
