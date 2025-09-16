@@ -10,8 +10,12 @@
         <div class="card">
 
             <div class="card-body register-card-body">
-                <p class="register-box-msg">Register a new membership</p>
-                
+                <p class="register-box-msg">Resert password</p>
+                @session('status')
+                    <div class="alert alert-success" role="alert">
+                        {{ $value }}
+                    </div>
+                @endsession
                 <form action=" {{ route('password.update') }} " method="POST">
                     @csrf
                     <input type="hidden" name="token" value="{{ request()->token }}">
@@ -52,7 +56,7 @@
 
                 <!-- /.social-auth-links -->
                 <p class="mt-3 text-center ">
-                    <a href="login.html" class="text-center"> I already have a membership </a>
+                    <a href="{{route('login')}}" class="text-center"> Back to login </a>
                 </p>
             </div>
             <!-- /.register-card-body -->

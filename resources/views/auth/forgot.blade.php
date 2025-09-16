@@ -5,10 +5,11 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="../index2.html"><b>Admin</b>LTE</a>
+             <a href="{{route('login')}}"><b>Admin</b>LTE</a>
+        </div>
         </div>
         <!-- /.login-logo -->
-        <div class="card">
+        <div class="card" style="width: 18%">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Reset password</p>
 
@@ -45,7 +46,7 @@
                 <!-- /.social-auth-links -->
                 <div class=" text-center p-3">
                     <p class="mb-0">
-                        <a href="register.html" class="text-center">Voltar para Login</a>
+                        <a href="{{route('login')}}" class="text-center">Voltar para Login</a>
                     </p>
                 </div>
 
