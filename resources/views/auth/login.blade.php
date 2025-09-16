@@ -11,7 +11,12 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="login" method="POST">
+                @session('status')
+                    <div class="alert alert-success" role="alert">
+                        {{ $value }}
+                    </div>
+                @endsession
+                <form action=" {{route('login')}}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-text">

@@ -25,9 +25,6 @@
 
 
             </div>
-            <div class="col-sm-6">
-                Actions
-            </div>
         </div>
         <!--end::Row-->
     </div>

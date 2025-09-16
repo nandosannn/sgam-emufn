@@ -58,7 +58,7 @@
                 </form>
 
                 <!-- /.social-auth-links -->
-                <p class="mt-3">
+                <p class="mt-3 text-center">
                     <a href="login.html" class="text-center"> I already have a membership </a>
                 </p>
             </div>
