@@ -1,61 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎶 Sistema Gerenciador de Apresentações Musicais
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#### ⚠️ **Status do Projeto:** Em progresso 🚧
+Este projeto ainda está em desenvolvimento e novas funcionalidades serão adicionadas em breve.
 
-## About Laravel
+## 📌 Sobre o Projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O Sistema de Gerenciamento de Apresentações Musicais é uma aplicação desenvolvida em Laravel para auxiliar no controle e organização de grupos musicais, apresentações, solicitações de transporte, cargos em eventos e gestão de usuários.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+O sistema foi projetado para atender tanto a grupos musicais quanto a organizadores de eventos, permitindo gerenciar desde os integrantes e instrumentos até a logística de transporte e os eventos em si.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🎯 Objetivo
 
-## Learning Laravel
+O objetivo principal do projeto é oferecer uma plataforma que facilite:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- O **cadastro e gerenciamento** de grupos musicais e seus integrantes.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- O **controle de apresentações**, incluindo local, data e responsáveis.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- A **organização de eventos** com designação de cargos e funções.
 
-## Laravel Sponsors
+- O **gerenciamento logístico**, como veículos, motoristas e solicitações de transporte.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- A **gestão de usuários**, alunos e funcionários envolvidos.
 
-### Premium Partners
+## 🏗️ Estrutura do Projeto
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+O sistema foi modelado a partir de um DER (Diagrama Entidade-Relacionamento) que contempla as seguintes principais entidades:
 
-## Contributing
+- **Pessoa / Usuário / Aluno / Funcionário** – gestão de usuários e perfis.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Grupo Musical** – cadastro de grupos, especialidades, coordenadores e membros.
 
-## Code of Conduct
+- **Instrumento Musical** – controle de instrumentos associados a membros.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Evento** – cadastro de eventos, descrição, data e responsáveis.
 
-## Security Vulnerabilities
+- **Solicitação de Apresentação** – pedidos de apresentações vinculados a eventos e grupos.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Solicitação de Transporte** – controle de veículos, motoristas e rotas.
 
-## License
+- **Endereço e Contato** – informações complementares de pessoas e locais.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A arquitetura segue o padrão **MVC (Model-View-Controller)** do Laravel, com organização em:
+
+- **Models** – representam as entidades do banco de dados.
+
+- **Controllers** – lógica de negócios e comunicação entre modelos e views.
+
+- **Migrations** – definição da estrutura do banco de dados.
+
+- **Views (Blade)** – interfaces para interação do usuário.
+
+## ⚙️ Instalação e Configuração
+
+### 🔹 Pré-requisitos
+
+Antes de começar, verifique se possui os seguintes itens instalados:
+
+- **PHP** igual ou superior à versão 8.1
+
+- **Composer**
+
+- **PostegreSQL** ou outro banco compatível
+
+- **Node.js & NPM**
+
+### 🔹 Passo a passo
+
+#### 1. Instale as dependências do PHP
+
+```
+composer install
+
+npm install && npm run build
+```
+
+#### 2. Crie o arquivo de configuração
+
+```
+cp .env.example .env
+```
+#### 3. Configure o `.env`
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=seu_banco
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+
+```
+#### 4. Gere a chave da aplicação
+
+```
+php artisan key:generate
+```
+#### 5. Execute as migrations
+
+```
+php artisan migrate --seed
+```
+#### 6. Inicie o servidor
+```
+php artisan serve
+```
+
+## 📂 Estrutura de Diretórios (principal)
+
+```
+app/                -> Models, Controllers e regras de negócio
+bootstrap/          -> Arquivos de inicialização do framework
+config/             -> Arquivos de configuração
+database/           -> Migrations, Seeders e Factories
+public/             -> Arquivos públicos (index.php, assets)
+resources/          -> Views (Blade), CSS, JS
+routes/             -> Definições de rotas
+storage/            -> Arquivos gerados pela aplicação
+tests/              -> Testes automatizados
+
+```
+
+## 🚀 Tecnologias Utilizadas
+
+- **Laravel 12** (PHP Framework)
+
+- **Postegre 17** (Banco de Dados Relacional)
+
+- **Blade** (Template Engine do Laravel)
+
+- **Bootstrap e AdminLTE** (Front-end)
+
+- **Node.js & NPM** (Build de assets)
+
+## Autor
+
+[Fernando Santos](https://github.com/nandosannn)
+
+
+
+
+
+
