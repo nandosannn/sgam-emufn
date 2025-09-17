@@ -1,6 +1,7 @@
 # 🎶 Sistema Gerenciador de Apresentações Musicais
 
-#### ⚠️ **Status do Projeto:** Em progresso 🚧
+⚠️ **Status do Projeto:** Em progresso 🚧
+
 Este projeto ainda está em desenvolvimento e novas funcionalidades serão adicionadas em breve.
 
 ## 📌 Sobre o Projeto
