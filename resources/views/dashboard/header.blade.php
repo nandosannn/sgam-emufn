@@ -179,7 +179,12 @@
                      <!--begin::Menu Footer-->
                      <li class="user-footer">
                          <a href="#" class="btn btn-default btn-flat">Profile</a>
-                         <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                         <form action="{{ route('logout') }}" method="POST" class="btn btn-default btn-flat float-end"  >
+                            @csrf
+                            <button type="submit" style="border: none; background-color: white;">
+                                Logout
+                            </button>
+                         </form>
                      </li>
                      <!--end::Menu Footer-->
                  </ul>
