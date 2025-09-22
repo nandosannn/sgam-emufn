@@ -35,7 +35,9 @@
                         <a href="{{ route('edit.users', $user)}}" title="editar">
                             <i class="bi bi-gear-fill text-primary"></i>
                         </a>
-                        <form action="#">
+                        <form action="{{ route('destroy.users', $user)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
                             <button class="btn p-0 border-0 bg-transparent" title="excluir">
                                 <i class="bi bi-trash-fill text-danger"></i>
                             </button>
