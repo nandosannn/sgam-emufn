@@ -8,6 +8,12 @@
 
 @section('content')
 
+@session('status')
+    <div class="alert alert-success">
+        {{ $value }}
+    </div>
+@endsession
+
 <div class="container-fluid bg-white p-3 rounded">
     <table class="table table-striped">
         <thead>

@@ -22,7 +22,15 @@ class UserController extends Controller
 
     public function store(Request $request){
 
-        dd($request->all());
+        $input = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        User::create($input);
+
+        return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
 
     }
 
