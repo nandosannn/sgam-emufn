@@ -3,7 +3,7 @@
 @section('page-title', 'Usuários')
 
 @section('page-actions')
-    <a href="{{ route('create.users') }}" class="btn btn-primary">Adicionar Usuários</a>
+    <a href="{{ route('create.users') }}" class="btn btn-primary">Adicionar Usuário</a>
 @endsection
 
 @section('content')
@@ -32,7 +32,7 @@
                 <td scope="row">{{$user->email}}</td>
                 <td scope="row">
                     <div class="d-flex align-items-center gap-2">
-                        <a href="#" title="editar">
+                        <a href="{{ route('edit.users', $user)}}" title="editar">
                             <i class="bi bi-gear-fill text-primary"></i>
                         </a>
                         <form action="#">
