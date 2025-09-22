@@ -3,7 +3,7 @@
 @section('page-title', 'Usuários')
 
 @section('page-actions')
-    <a href="#" class="btn btn-primary">Adicionar Usuários</a>
+    <a href="{{ route('create.users') }}" class="btn btn-primary">Adicionar Usuários</a>
 @endsection
 
 @section('content')
