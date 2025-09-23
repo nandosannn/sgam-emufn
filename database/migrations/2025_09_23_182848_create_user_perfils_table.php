@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('telefone');
             $table->enum('tipoPerfil', ['solicitante', 'coordenador', 'administrador'])->default('solicitante');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
