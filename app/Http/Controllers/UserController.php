@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserPerfil;
 
 class UserController extends Controller
 {
@@ -35,6 +36,7 @@ class UserController extends Controller
     }
 
     public function edit(User $user){
+        $user->load('perfil');
         return view('users.edit', compact('user'));
     }
 
@@ -52,7 +54,22 @@ class UserController extends Controller
     }
 
     public function updateProfile(User $user, Request $request){
-        dd($request->all());
+        $request->validate([
+            'tipo_perfil' => 'required',
+            'ocupacao' => 'required',
+            'telefone' => 'required'
+        ]);
+
+        UserPerfil::updateOrCreate([
+            'user_id' => $user->id
+        ], [
+            'tipoPerfil' => $request->tipo_perfil,
+            'ocupacao' => $request->ocupacao,
+            'telefone' => $request->telefone,
+            'user_id' => $user->id
+        ]);
+
+        return redirect()->route('index.users')->with('status', 'Usuário deletado com sucesso');
     }
 
     public function destroy(User $user){
