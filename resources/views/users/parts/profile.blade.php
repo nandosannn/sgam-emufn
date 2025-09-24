@@ -8,7 +8,7 @@
 
         <div class="card-body">
             <div class="mb-3">
-                <label for="tipo_perfil" class="form-label">Tipo do Perfil</label>
+                <label for="tipo_perfil" class="form-label">Tipo</label>
                 <select class="form-control @error('tipo_perfil') is-invalid @enderror" name="tipo_perfil" id="tipo_perfil">
                     @foreach (['solicitante', 'coordenador', 'administrador'] as $item)
                         <option
