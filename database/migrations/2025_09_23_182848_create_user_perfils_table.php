@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('user_perfils', function (Blueprint $table) {
             $table->id();
-            $table->string('ocupacao');
+            $table->string('ocupacao')->nullable();
             $table->string('telefone');
+            $table->string('email')->unique();
             $table->enum('tipoPerfil', ['solicitante', 'coordenador', 'administrador'])->default('solicitante');
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
