@@ -2,11 +2,12 @@
 
 @section('body-class', 'register-page')
 @section('content')
-    <div class="register-box">
+    <div class="container" style="max-width: 900px; margin: auto;">
         <div class="register-logo">
             <a href="{{ route('login') }}"><b>Admin</b>LTE</a>
         </div>
         <!-- /.register-logo -->
+
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="register-box-msg">Register a new membership</p>
@@ -87,5 +88,6 @@
             </div>
             <!-- /.register-card-body -->
         </div>
+
     </div>
 @endsection
