@@ -17,8 +17,8 @@
                         <div class="input-group-text">
                             <span class="bi bi-envelope"></span>
                         </div>
-                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{old('email')}}"  />
-                        @error('email')
+                        <input name="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" placeholder="CPF" value="{{old('cpf')}}"  />
+                        @error('cpf')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -28,7 +28,7 @@
                         <div class="input-group-text">
                             <span class="bi bi-lock-fill"></span>
                         </div>
-                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" />
+                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Senha" />
                         @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}

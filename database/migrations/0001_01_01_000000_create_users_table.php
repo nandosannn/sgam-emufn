@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('sobrenome');
             $table->string('cpf')->unique();
-            $table->string('username')->unique();
             $table->string('password');
             $table->boolean('ativo')->default(true);
             $table->rememberToken();
@@ -24,7 +23,7 @@ return new class extends Migration
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('username')->primary();
+            $table->string('cpf')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

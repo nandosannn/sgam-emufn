@@ -21,7 +21,6 @@ class User extends Authenticatable
         'name',
         'sobrenome',
         'cpf',
-        'username',
         'ativo',
         'password',
     ];
@@ -49,6 +48,6 @@ class User extends Authenticatable
     }
 
     public function perfil(){
-        return $this->hasOne(UserPerfil::class);
+        return $this->belongsTo(UserPerfil::class);
     }
 }
