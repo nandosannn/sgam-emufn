@@ -8,25 +8,6 @@
 
         <div class="card-body">
             <div class="mb-3">
-                <label for="tipo_perfil" class="form-label">Tipo do Perfil</label>
-                <select class="form-control @error('tipo_perfil') is-invalid @enderror" name="tipo_perfil" id="tipo_perfil">
-                    @foreach (['solicitante', 'coordenador', 'administrador'] as $item)
-                        <option
-                            value="{{$item}}"
-                            @selected(old('tipo_perfil') ===  $item || $user?->perfil?->tipoPerfil === $item)
-                        >
-                            {{ $item }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('tipo_perfil')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
                 <label for="ocupacao" class="form-label">Ocupação</label>
                 <input value="{{old('ocupacao') ?? $user?->perfil?->ocupacao}}" type="ocupacao" name="ocupacao" id="ocupacao" class="form-control @error('ocupacao') is-invalid @enderror">
                 @error('ocupacao')
@@ -46,14 +27,42 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" placeholder="Email" name="email" class="form-control @error('email') is-invalid @enderror"
+                    id="email" value="{{ old('email') ?? $user?->perfil?->email}}">
+                @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="tipoPerfil" class="form-label">Tipo do Perfil</label>
+                <select name="tipo_perfil" id="tipo_perfil" class="form-control @error('tipo_perfil') is-invalid @enderror">
+                    <option value="solicitante" {{ $user?->perfil?->tipoPerfil == 'solicitante' ? 'selected' : '' }}>Solicitante</option>
+                    <option value="coordenador" {{ $user?->perfil?->tipoPerfil == 'coordenador' ? 'selected' : '' }}>Coordenador</option>
+                </select>
+                @error('tipo_perfil')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
         </div>
         <div class="card-footer text-end">
             <button type="submit" class="btn btn-primary text-end">Editar</button>
         </div>
     </form>
 </div>
-
-
-
-
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#telefone').mask('(00) 00000-0000');
+});
+</script>
