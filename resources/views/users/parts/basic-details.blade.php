@@ -33,7 +33,7 @@
 
 
             <div class="mb-3">
-                <label for="cpf" class="form-label">Email</label>
+                <label for="cpf" class="form-label">CPF</label>
                 <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
                     id="cpf" value="{{ old('cpf') ?? $user->cpf }}">
                 @error('cpf')
@@ -60,7 +60,3 @@
     </form>
 </div>
 
-
-
-
-</form>
