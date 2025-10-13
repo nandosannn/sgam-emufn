@@ -12,6 +12,7 @@ class UserPerfil extends Model
         'tipoPerfil',
         'ocupacao',
         'telefone',
+        'email',
         'user_id'
     ];
 

@@ -8,42 +8,68 @@ use App\Models\UserPerfil;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $users = User::paginate();
 
         return view('users.index', compact('users'));
     }
 
-    public function create(){
+    public function create()
+    {
 
         return view('users.create');
-
     }
 
-    public function store(Request $request){
-
-        $input = $request->validate([
+    public function store(Request $request)
+    {
+        $request->validate([
             'name' => 'required',
+            'sobrenome' => 'required',
+            'cpf' => 'required',
+            'password' => 'required|min:6',
+            'ocupacao' => 'required',
+            'telefone' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'tipo_perfil' => 'required',
         ]);
 
-        User::create($input);
+        $user = User::create([
+            'name' => $request->name,
+            'sobrenome' => $request->sobrenome,
+            'cpf' => $request->cpf,
+            'password' => $request->password,
+        ]);
 
-        return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
+        if ($user) {
+            $perfil = UserPerfil::create([
+                'ocupacao' => $request->ocupacao,
+                'telefone' => $request->telefone,
+                'email' => $request->email,
+                'tipo_perfil' => $request->tipo_perfil,
+                'user_id' => $user->id
+            ]);
+            if($perfil){
+                return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
+            }
+        }
 
+        return redirect()->route('create.users')->with('status', 'Erro ao cadastrar usuário!');
     }
 
-    public function edit(User $user){
+    public function edit(User $user)
+    {
         $user->load('perfil');
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user, Request $request){
+    public function update(User $user, Request $request)
+    {
         $input = $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'sobrenome' => 'required',
+            'cpf' => 'required',
             'password' => 'exclude_if:password,null|min:6'
         ]);
 
@@ -53,11 +79,13 @@ class UserController extends Controller
         return redirect()->route('index.users')->with('status', 'Usuário editado com sucesso!');
     }
 
-    public function updateProfile(User $user, Request $request){
+    public function updateProfile(User $user, Request $request)
+    {
         $request->validate([
             'tipo_perfil' => 'required',
             'ocupacao' => 'required',
-            'telefone' => 'required'
+            'telefone' => 'required',
+            'email' => 'required|email'
         ]);
 
         UserPerfil::updateOrCreate([
@@ -66,17 +94,17 @@ class UserController extends Controller
             'tipoPerfil' => $request->tipo_perfil,
             'ocupacao' => $request->ocupacao,
             'telefone' => $request->telefone,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'email' => $request->email
         ]);
 
         return redirect()->route('index.users')->with('status', 'Usuário deletado com sucesso');
     }
 
-    public function destroy(User $user){
+    public function destroy(User $user)
+    {
         $user->delete();
 
         return redirect()->route('index.users')->with('status', 'Usuário deletado com sucesso');
     }
-
-
 }

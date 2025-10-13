@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Hash;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Fortify;
+use App\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -29,21 +30,22 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::loginView(function(){
-            return view('auth.login');
+        Fortify::authenticateUsing(function (\Illuminate\Http\Request $request) {
+            $user = User::where('cpf', $request->cpf)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
         });
 
-        Fortify::requestPasswordResetLinkView(function(){
-            return view('auth.forgot');
+        Fortify::loginView(function(){
+            return view('auth.login');
         });
 
         Fortify::registerView(function(){
             return view('auth.register');
         });
 
-        Fortify::resetPasswordView(function(){
-            return view('auth.reset_password');
-        });
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -60,6 +62,6 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
-    
+
     }
 }

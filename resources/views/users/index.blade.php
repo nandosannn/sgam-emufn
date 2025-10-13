@@ -28,7 +28,7 @@
             @foreach ($users as $user)
             <tr>
                 <td scope="row">{{$user->id}}</td>
-                <td scope="row">{{$user->name}}</td>
+                <td scope="row">{{$user->name.' '.$user->sobrenome}}</td>
                 <td scope="row">{{$user->email}}</td>
                 <td scope="row">
                     <div class="d-flex align-items-center gap-2">
