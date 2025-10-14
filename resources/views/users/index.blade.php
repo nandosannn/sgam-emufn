@@ -31,7 +31,7 @@
             <tr>
                 <td scope="row">{{$user->id}}</td>
                 <td scope="row">{{$user->nome.' '.$user->sobrenome}}</td>
-                <td scope="row">{{$user->perfil->email}}</td>
+                <td scope="row">{{$user?->perfil?->email}}</td>
                 <td scope="row">
                     <div class="d-flex align-items-center gap-2">
                         <a href="{{ route('edit.users', $user)}}" title="editar">
