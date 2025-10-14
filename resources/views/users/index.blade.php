@@ -1,5 +1,7 @@
 @extends('layout.default')
 
+@section('page-title', '')
+
 @section('page-title', 'Usuários')
 
 @section('page-actions')
