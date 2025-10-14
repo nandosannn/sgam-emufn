@@ -102,23 +102,24 @@ class UserController extends Controller
             'user_id' => $user->id,
             'email' => $request->email
         ]);
-         $coordenador = CoordenadorGrupo::where('user_id', $user->id)->first();
+
+        $coordenador = CoordenadorGrupo::where('user_id', $user->id)->first();
         if ($request->tipo_perfil == 'coordenador') {
-        if (!$coordenador) {
-            CoordenadorGrupo::create([
-                'user_id' => $user->id,
-                'ativo' => true
-            ]);
+            if (!$coordenador) {
+                CoordenadorGrupo::create([
+                    'user_id' => $user->id,
+                    'ativo' => true
+                ]);
+            } else {
+                $coordenador->ativo = true;
+                $coordenador->save();
+            }
         } else {
-            $coordenador->ativo = true;
-            $coordenador->save();
+            if ($coordenador) {
+                $coordenador->ativo = false;
+                $coordenador->save();
+            }
         }
-    } else {
-        if ($coordenador) {
-            $coordenador->ativo = false;
-            $coordenador->save();
-        }
-    }
         return redirect()->route('index.users')->with('status', 'Usuário atualizado com sucesso');
     }
 
