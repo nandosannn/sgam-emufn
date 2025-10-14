@@ -1,5 +1,7 @@
 @extends('layout.default')
 
+@section('title-aba', 'SGAM | Adicionar Usuário')
+
 @section('page-title', 'Adicionar Usuário')
 
 @section('content')

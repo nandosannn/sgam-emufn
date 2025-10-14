@@ -1,6 +1,6 @@
 @extends('layout.default')
 
-@section('page-title', '')
+@section('title-aba', 'SGAM | Lista de Usuários')
 
 @section('page-title', 'Usuários')
 

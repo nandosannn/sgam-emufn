@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     @vite('resources/scss/app.scss')
-    <title>@yield('title', 'SGAM | Home')</title>
+    <title>@yield('title-aba', 'SGAM | Home')</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
 </head>
 <!--end::Head-->
