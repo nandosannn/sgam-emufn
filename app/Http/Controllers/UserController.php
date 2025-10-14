@@ -31,7 +31,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'nome' => 'required',
             'sobrenome' => 'required',
             'cpf' => 'required',
             'password' => 'required|min:6',
@@ -42,7 +42,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'nome' => $request->nome,
             'sobrenome' => $request->sobrenome,
             'cpf' => $request->cpf,
             'password' => $request->password,
@@ -57,6 +57,10 @@ class UserController extends Controller
                 'user_id' => $user->id
             ]);
             if ($perfil) {
+
+                if($perfil->tipo_perfil == 'coordenador'){
+
+                }
                 return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
             }
         }
@@ -73,7 +77,7 @@ class UserController extends Controller
     public function update(User $user, Request $request)
     {
         $input = $request->validate([
-            'name' => 'required',
+            'nome' => 'required',
             'sobrenome' => 'required',
             'cpf' => 'required',
             'password' => 'exclude_if:password,null|min:6'

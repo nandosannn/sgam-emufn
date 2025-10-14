@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -30,7 +30,7 @@
             @foreach ($users as $user)
             <tr>
                 <td scope="row">{{$user->id}}</td>
-                <td scope="row">{{$user->name.' '.$user->sobrenome}}</td>
+                <td scope="row">{{$user->nome.' '.$user->sobrenome}}</td>
                 <td scope="row">{{$user->perfil->email}}</td>
                 <td scope="row">
                     <div class="d-flex align-items-center gap-2">

@@ -1,5 +1,5 @@
 @extends('layout.default')
-
+@section('title-aba', 'SGAM | Editar Usuário')
 @section('page-title', 'Editar Usuário')
 
 @section('content')

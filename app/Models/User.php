@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nome',
         'sobrenome',
         'cpf',
         'ativo',
@@ -50,5 +50,9 @@ class User extends Authenticatable
 
     public function perfil(){
         return $this->hasOne(UserPerfil::class);
+    }
+
+    public function coordenador(){
+        return $this->hasMany(CoordenadorGrupo::class);
     }
 }

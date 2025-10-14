@@ -19,10 +19,10 @@
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <div class="input-group-text"><span class="bi bi-person"></span></div>
-                                    <input type="text" name="name"
-                                        class="form-control @error('name') is-invalid @enderror" placeholder="Nome"
-                                        value="{{ old('name') }}" />
-                                    @error('name')
+                                    <input type="text" name="nome"
+                                        class="form-control @error('nome') is-invalid @enderror" placeholder="Nome"
+                                        value="{{ old('nome') }}" />
+                                    @error('nome')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
