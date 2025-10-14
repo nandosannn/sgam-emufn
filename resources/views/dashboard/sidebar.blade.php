@@ -22,8 +22,8 @@
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation"
                 aria-label="Main navigation" data-accordion="false" id="navigation">
                 <li class="nav-header">CONFIGURAÇÕES</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Request::is('users*') ? 'menu-open' : ''  }}">
+                    <a href="#" class="nav-link {{ Request::routeIs('index.users') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-person-gear"></i>
                         <p>
                             Usuários
@@ -32,21 +32,32 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('index.users') }}" class="nav-link">
+                            <a href="{{ route('index.users') }}" class="nav-link {{ Request::routeIs('index.users') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-person-fill"></i>
                                 <p>Lista de Usuários</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-person-gear"></i>
+                        <p>
+                            Coordenador
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('index.users') }}" class="nav-link">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Lista de Coordenadores</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./widgets/info-box.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>info Box</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./widgets/cards.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Cards</p>
+                                <p>Lista de Grupos</p>
                             </a>
                         </li>
                     </ul>
@@ -55,79 +66,25 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
-                            Layout Options
+                            Solicitações
                             <span class="nav-badge badge text-bg-secondary me-3">6</span>
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./layout/unfixed-sidebar.html" class="nav-link">
+                            <a class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Default Sidebar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/fixed-sidebar.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Fixed Sidebar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/fixed-header.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Fixed Header</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/fixed-footer.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Fixed Footer</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/fixed-complete.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Fixed Complete</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/layout-custom-area.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Layout <small>+ Custom Area </small></p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/sidebar-mini.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sidebar Mini</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/collapsed-sidebar.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sidebar Mini <small>+ Collapsed</small></p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/logo-switch.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Sidebar Mini <small>+ Logo Switch</small></p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/layout-rtl.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Layout RTL</p>
+                                <p>Lista de Solicitações</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-tree-fill"></i>
+                        <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
-                            UI Elements
+                            Relatórios
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
@@ -135,19 +92,19 @@
                         <li class="nav-item">
                             <a href="./UI/general.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>General</p>
+                                <p>Solicitações Abertas</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./UI/icons.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Icons</p>
+                                <p>Solicitações Sem Grupos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./UI/timeline.html" class="nav-link">
+                            <a href="./UI/icons.html" class="nav-link" title="Solicitações Sem Transporte">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Timeline</p>
+                                <p>Solicitações Sem Transporte</p>
                             </a>
                         </li>
                     </ul>

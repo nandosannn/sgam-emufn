@@ -2,10 +2,6 @@
 
 @php
 
-$menus = [
-    ['label' => 'Home', 'url' => '#']
-]
-
 @endphp
 
 @section('page-title', 'Dashboard')
