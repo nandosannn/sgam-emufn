@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoordenadorGrupo;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserPerfil;
@@ -13,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
 
-        if (Auth::user()->cpf == '11111111112'){
+        if (Auth::user()->cpf == '11111111112') {
             $user = User::where('cpf', '11111111112')->first();
             $user->assignRole('admin');
         }
@@ -58,8 +59,7 @@ class UserController extends Controller
             ]);
             if ($perfil) {
 
-                if($perfil->tipo_perfil == 'coordenador'){
-
+                if ($perfil->tipo_perfil == 'coordenador') {
                 }
                 return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
             }
@@ -98,7 +98,7 @@ class UserController extends Controller
             'email' => 'required|email'
         ]);
 
-        UserPerfil::updateOrCreate([
+        $perfil = UserPerfil::updateOrCreate([
             'user_id' => $user->id
         ], [
             'tipoPerfil' => $request->tipo_perfil,
@@ -107,8 +107,24 @@ class UserController extends Controller
             'user_id' => $user->id,
             'email' => $request->email
         ]);
-
-        return redirect()->route('index.users')->with('status', 'Usuário deletado com sucesso');
+         $coordenador = CoordenadorGrupo::where('user_id', $user->id)->first();
+        if ($request->tipo_perfil == 'coordenador') {
+        if (!$coordenador) {
+            CoordenadorGrupo::create([
+                'user_id' => $user->id,
+                'ativo' => true
+            ]);
+        } else {
+            $coordenador->ativo = true;
+            $coordenador->save();
+        }
+    } else {
+        if ($coordenador) {
+            $coordenador->ativo = false;
+            $coordenador->save();
+        }
+    }
+        return redirect()->route('index.users')->with('status', 'Usuário atualizado com sucesso');
     }
 
     public function destroy(User $user)
