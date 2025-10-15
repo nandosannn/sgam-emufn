@@ -1,5 +1,5 @@
 <!--begin::Sidebar-->
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+<aside class="app-sidebar bg-body-secondary shadow sidebar-liberation sidebar-menu" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
         <!--begin::Brand Link-->
@@ -21,11 +21,10 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation"
                 aria-label="Main navigation" data-accordion="false" id="navigation">
-                <li class="nav-header">CONFIGURAÇÕES</li>
-
                 @role('admin')
+                <li class="nav-header">ADMINISTRAÇÃO</li>
                 <li class="nav-item {{ Request::is('users*') ? 'menu-open' : ''  }}">
-                    <a href="#" class="nav-link {{ Request::routeIs('index.users') ? 'active' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-person-gear"></i>
                         <p>
                             Usuários
@@ -41,8 +40,25 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ Request::is('grupos*') ? 'menu-open' : ''  }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-person-gear"></i>
+                        <p>
+                            Grupos Musicais
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('index.grupos') }}" class="nav-link {{ Request::routeIs('index.grupos') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Lista de Grupos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endrole
-
+                <li class="nav-header">CONFIGURAÇÕES</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-person-gear"></i>

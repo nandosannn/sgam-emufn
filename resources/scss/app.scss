@@ -3,3 +3,72 @@
 @import 'admin-lte';
 
 @import 'overlayscrollbars/styles/overlayscrollbars.css';
+
+
+// Definir fonte Liberation
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+// Aplicar Liberation Sans ao sidebar
+.sidebar-liberation {
+    font-family: 'Liberation Sans', Arial, sans-serif !important;
+    font-size: 0.875rem !important; /* ~14px */
+
+    .sidebar-brand,
+    .brand-text,
+    .nav-header,
+    .nav-link,
+    .nav-treeview .nav-link {
+        font-family: inherit !important;
+    }
+
+    // Manter ícones do Bootstrap Icons
+    .bi {
+        font-family: 'Bootstrap Icons' !important;
+    }
+}
+
+// Para melhor legibilidade
+.sidebar-menu {
+    .nav-header {
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+
+    .nav-link {
+        font-weight: 400;
+
+        p {
+            font-family: inherit;
+        }
+    }
+}

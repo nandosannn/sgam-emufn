@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('cpf', '!=', 'admin')->paginate();
+        $users = User::where('cpf', '!=', 'admin')->paginate(10);
         return view('users.index', compact('users'));
     }
 
