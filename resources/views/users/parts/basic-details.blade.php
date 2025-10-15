@@ -9,10 +9,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="mb-3 col-6">
-                    <label for="name" class="form-label">Nome</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                        id="name" value="{{ old('name') ?? $user->name }}">
-                    @error('name')
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror"
+                        id="nome" value="{{ old('name') ?? $user->nome }}">
+                    @error('nome')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
