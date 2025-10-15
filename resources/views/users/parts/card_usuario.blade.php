@@ -2,11 +2,11 @@
     <div class="card-body">
         <div class="d-flex align-items-center gap-2 mb-3">
             <i class="bi bi-person-fill fs-4 text-primary"></i>
-            <h5 class="fs-4 p-0 m-0 fw-bold">{{$user->nome.' '.$user->sobrenome}}</h5>
+            <h5 class="fs-4 p-0 m-0 fw-bold text-break">{{$user->nome.' '.$user->sobrenome}}</h5>
         </div>
-        <p class="text-muted mb-1">{{$user?->perfil?->email}}</p>
-        <p class="text-sm text-muted mb-1">{{$user?->perfil?->telefone}}</p>
-        <p class="fst-italic mb-4">{{$user?->perfil?->tipoPerfil}}</p>
+        <p class="text-muted mb-1 text-break">{{$user?->perfil?->email}}</p>
+        <p class="text-sm text-muted mb-1 text-break">{{$user?->perfil?->telefone}}</p>
+        <p class="fst-italic mb-4 text-break">{{$user?->perfil?->tipoPerfil}}</p>
 
         <div class="d-flex justify-content-start gap-2 mt-3">
             <form action="{{ route('destroy.users', $user)}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
