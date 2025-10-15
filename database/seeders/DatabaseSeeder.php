@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $adminUser = User::create([
             'nome' => 'Adm',
             'sobrenome' => 'Sgam',
-            'cpf' => '12345678912',
+            'cpf' => 'admin',
             'password' => Hash::make('sgam!2025'),
             'ativo' => true,
         ]);

@@ -34,8 +34,8 @@
 
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                    id="cpf" value="{{ old('cpf') ?? $user->cpf }}">
+                <input readonly type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
+                    id="cpf" value="{{ old('cpf') ?? $user->cpf }}" style="background-color: rgb(240, 240, 240)">
                 @error('cpf')
                     <div class="invalid-feedback">
                         {{ $message }}
