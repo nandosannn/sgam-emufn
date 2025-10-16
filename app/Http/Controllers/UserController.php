@@ -38,7 +38,7 @@ class UserController extends Controller
             $query->where('cpf', 'like', '%' . $request->cpf . '%');
         }
 
-        $users = $query->paginate(10);
+        $users = $query->paginate(8);
 
         return view('users.index', compact('users'));
     }
