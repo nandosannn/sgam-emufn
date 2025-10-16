@@ -6,7 +6,7 @@
         </div>
         <p class="text-muted mb-1 text-break">{{$user?->perfil?->email}}</p>
         <p class="text-sm text-muted mb-1 text-break">{{$user?->perfil?->telefone}}</p>
-        <p class="fst-italic mb-4 text-break">{{$user?->perfil?->tipoPerfil}}</p>
+        <p class="fst-italic mb-4 text-break"><strong>{{$user?->perfil?->tipoPerfil}}</strong></p>
 
         <div class="d-flex justify-content-start gap-2 mt-3">
             <form action="{{ route('destroy.users', $user)}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">

@@ -33,6 +33,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ route('create.users') }}" class="nav-link {{ Request::routeIs('create.users') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Criar Usuário</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
                             <a href="{{ route('index.users') }}" class="nav-link {{ Request::routeIs('index.users') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-person-fill"></i>
                                 <p>Lista de Usuários</p>

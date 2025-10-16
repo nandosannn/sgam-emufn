@@ -6,14 +6,40 @@ use App\Models\CoordenadorGrupo;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserPerfil;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::where('cpf', '!=', 'admin')->paginate(10);
+        $query = User::with('perfil')->where('cpf', '!=', 'admin');
+
+        // Filtro por nome (campo em users)
+        if ($request->filled('nome')) {
+            $termo = '%' . $request->nome . '%';
+            $query->where(function ($q) use ($termo) {
+                $q->where('nome', 'like', $termo)
+                    ->orWhere('sobrenome', 'like', $termo)
+                    ->orWhere(DB::raw("CONCAT(nome, ' ', sobrenome)"), 'like', $termo);
+            });
+        }
+
+        // Filtro por email (campo em perfil)
+        if ($request->filled('email')) {
+            $query->whereHas('perfil', function ($q) use ($request) {
+                $q->where('email', 'like', '%' . $request->email . '%');
+            });
+        }
+
+        // Filtro por CPF (campo em users)
+        if ($request->filled('cpf')) {
+            $query->where('cpf', 'like', '%' . $request->cpf . '%');
+        }
+
+        $users = $query->paginate(10);
+
         return view('users.index', compact('users'));
     }
 
