@@ -45,14 +45,17 @@
             </div>
         </form>
     </div>
-    <!-- FORMULÁRIO DE FILTRO -->
-
-    <!-- FIM DO FILTRO -->
+    @if (count($users) > 0)
     <div class="row gap-4">
         @foreach($users as $user)
         @include('users.parts.card_usuario', ['user' => $user])
         @endforeach
     </div>
+    @else
+    <div class="d-flex justify-content-center">
+        <h3>Nenhum Usuário Cadastrado</h3>
+    </div>
+    @endif
 </div>
 <div class="p-3">
     {{ $users->links() }}
