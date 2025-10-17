@@ -2,8 +2,6 @@
 
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
-@section('page-title', 'Adicionar Usuário')
-
 <style>
     .form-control:focus {
         outline: none !important;
@@ -13,11 +11,12 @@
 </style>
 
 @section('content')
-    <div class="container-fluid p-3 rounded">
+    <div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
+        <div class="fs-4 fw-bold mb-4">Adicionar Usuário</div>
         <form action="{{ route('store.users') }}" method="POST">
             @csrf
-            <div class="card">
-                <div class="card-header">
+            <div class="card mb-3">
+                <div class="card-header fs-5 ">
                     Dados de Usuário
                 </div>
 
@@ -70,9 +69,9 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-header">
+
+            <div class="card mb-3">
+                <div class="card-header fs-5">
                     Perfil
                 </div>
 
@@ -126,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            <br>
+
             <div class="card-footer text-end">
                 <button type="submit" class="btn btn-primary text-end">Criar Usuário</button>
             </div>
