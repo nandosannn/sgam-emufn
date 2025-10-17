@@ -22,5 +22,6 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('destroy.users');
 
     Route::get('/grupos', [GrupoController::class, 'index'])->name('index.grupos');
+    Route::get('grupos/create', [GrupoController::class, 'create'])->name('create.grupos');
 });
 

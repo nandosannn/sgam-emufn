@@ -2,60 +2,52 @@
 
 @section('title-aba', 'SGAM | Lista de Grupos')
 
-@section('page-title', 'Grupos')
-
-@section('page-actions')
-<a href="#" class="btn btn-primary">Adicionar Grupo</a>
-@endsection
-
 @section('content')
+
+<style>
+    .form-control:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #1a70c7ff !important;
+    }
+</style>
 
 @session('status')
 <div class="alert alert-success">
     {{ $value }}
 </div>
 @endsession
-
-<div class="container-fluid p-3 rounded">
+<div class="container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
+    <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
+        <h5 class="fs-3 fw-bold">Grupos</h5>
+        <form method="GET" action="{{ route('index.grupos') }}">
+            <div class="row g-3">
+                <div class="col-md-7">
+                    <input type="text" class="form-control" id="nome" name="nome"
+                        value="{{ request('nome') }}" placeholder="Busca por nome">
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">
+                        <i class="fas fa-search"></i> Filtrar
+                    </button>
+                    <a href="{{ route('index.grupos') }}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Limpar
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
     @if (count($grupos) > 0)
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($grupos as $grupo)
-            <tr>
-                <td scope="row">{{$grupo->id}}</td>
-                <td scope="row">{{$grupo->nome}}</td>
-                <td scope="row">
-                    <div class="d-flex align-items-center gap-2">
-                        <a href="{{ route('edit.users', $user)}}" title="editar">
-                            <i class="bi bi-gear-fill text-primary"></i>
-                        </a>
-                        <form action="{{ route('destroy.users', $user)}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn p-0 border-0 bg-transparent" title="excluir">
-                                <i class="bi bi-trash-fill text-danger"></i>
-                            </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-
-        </tbody>
-    </table>
+    <div class="row gap-4">
+        @foreach($grupos as $grupo)
+        @include('grupos.parts.card_grupo', ['grupo' => $grupo])
+        @endforeach
+    </div>
     @else
     <div class="d-flex justify-content-center">
-        <h3>Nenhum grupo cadastrado</h3>
+        <h3>Nenhum Grupo Cadastrado</h3>
     </div>
     @endif
-
 </div>
 <div class="p-3">
     {{ $grupos->links() }}
