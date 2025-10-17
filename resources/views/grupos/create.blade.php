@@ -2,15 +2,22 @@
 
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
-@section('page-title', 'Adicionar Usuário')
+<style>
+    .form-control:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #1a70c7ff !important;
+    }
+</style>
 
 @section('content')
-    <div class="container-fluid p-3 rounded">
+    <div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
+        <div class="fs-4 fw-bold mb-4">Adicionar Grupo</div>
         <form action="{{ route('store.users') }}" method="POST">
             @csrf
-            <div class="card">
-                <div class="card-header">
-                    Dados de Usuário
+            <div class="card mb-3">
+                <div class="card-header fs-5">
+                    Dados do Grupo
                 </div>
 
                 <div class="card-body">
@@ -27,9 +34,13 @@
                         </div>
 
                         <div class="mb-3 col-6">
-                            <label for="sobrenome" class="form-label">Sobrenome</label>
-                            <input type="text" name="sobrenome"
-                                class="form-control @error('sobrenome') is-invalid @enderror" id="sobrenome" value="">
+                            <label for="coordenador" class="form-label">Coordenador</label>
+                            <select class="form-control" name="coordenador" id="coordenador">
+                                <option value="">Selecione</option>
+                                @foreach ($coordenadores as $coordenador)
+                                    <option value="{{$coordenador?->id}}">{{ $coordenador?->user?->nome }}</option>
+                                @endforeach
+                            </select>
                             @error('sobrenome')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -37,8 +48,6 @@
                             @enderror
                         </div>
                     </div>
-
-
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
@@ -62,65 +71,8 @@
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-header">
-                    Perfil
-                </div>
-
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="ocupacao" class="form-label">Ocupação</label>
-                        <input value="" type="ocupacao" name="ocupacao" id="ocupacao"
-                            class="form-control @error('ocupacao') is-invalid @enderror">
-                        @error('ocupacao')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">Telefone de Contato</label>
-                        <input type="tel" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" placeholder="(99) 99999-9999"
-                            name="telefone" class="form-control @error('telefone') is-invalid @enderror" id="telefone"
-                            value="">
-                        @error('telefone')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" placeholder="Email" name="email"
-                            class="form-control @error('email') is-invalid @enderror" id="email" value="">
-                        @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="tipoPerfil" class="form-label">Tipo do Perfil</label>
-                        <select name="tipo_perfil" id="tipo_perfil"
-                            class="form-control @error('tipo_perfil') is-invalid @enderror">
-                            <option value="solicitante">Solicitante</option>
-                            <option value="coordenador">Coordenador</option>
-                        </select>
-                        @error('tipo_perfil')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-            <br>
             <div class="card-footer text-end">
-                <button type="submit" class="btn btn-primary text-end">Criar Usuário</button>
+                <button type="submit" class="btn btn-primary text-end">Adicionar</button>
             </div>
         </form>
     </div>

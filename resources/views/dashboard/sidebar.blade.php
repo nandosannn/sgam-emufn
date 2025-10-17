@@ -57,6 +57,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                            <a href="{{ route('create.grupos') }}" class="nav-link {{ Request::routeIs('create.grupos') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Criar Grupo</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('index.grupos') }}" class="nav-link {{ Request::routeIs('index.grupos') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-person-fill"></i>

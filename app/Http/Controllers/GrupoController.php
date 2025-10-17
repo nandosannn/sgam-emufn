@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoordenadorGrupo;
 use App\Models\GrupoMusical;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,7 @@ class GrupoController extends Controller
     }
 
     public function create(){
-        return view('grupos.create');
+        $coordenadores = CoordenadorGrupo::with('user')->where('ativo', true)->get();
+        return view('grupos.create', compact('coordenadores'));
     }
 }

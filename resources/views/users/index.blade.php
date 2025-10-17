@@ -17,7 +17,7 @@
     {{ $value }}
 </div>
 @endsession
-<div class="container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
+<div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
     <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
         <h5 class="fs-3 fw-bold">Usuários</h5>
         <form method="GET" action="{{ route('index.users') }}">

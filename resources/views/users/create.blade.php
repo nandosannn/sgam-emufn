@@ -4,6 +4,14 @@
 
 @section('page-title', 'Adicionar Usuário')
 
+<style>
+    .form-control:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #1a70c7ff !important;
+    }
+</style>
+
 @section('content')
     <div class="container-fluid p-3 rounded">
         <form action="{{ route('store.users') }}" method="POST">
