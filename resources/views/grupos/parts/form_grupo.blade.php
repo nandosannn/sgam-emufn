@@ -1,4 +1,4 @@
- <form action="#" method="POST">
+ <form action="{{route('update.grupos', $grupo)}}" method="POST">
     @method('PUT')
      @csrf
      <div class="card mb-3">

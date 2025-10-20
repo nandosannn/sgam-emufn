@@ -52,4 +52,21 @@ class GrupoController extends Controller
         $coordenadores = CoordenadorGrupo::with('user')->get();
         return view('grupos.edit', compact('grupo', 'coordenadores'));
     }
+
+    public function update(Request $request, GrupoMusical $grupo){
+
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'data' => 'required|date',
+            'coordenador' => 'required|exists:coordenador_grupo,id',
+        ]);
+
+        $grupo->update([
+            'nome' => $request->nome,
+            'dataFundacao' => $request->data,
+            'coordenador_id' => $request->coordenador,
+        ]);
+
+        return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
+    }
 }
