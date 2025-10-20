@@ -25,5 +25,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grupos/create', [GrupoController::class, 'create'])->name('create.grupos');
 
     Route::post('grupos/store', [GrupoController::class, 'store'])->name('store.grupos');
+
+    Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
+
+    Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
 });
 

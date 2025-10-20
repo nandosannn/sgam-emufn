@@ -45,4 +45,11 @@ class GrupoController extends Controller
         return redirect()->route('create.grupos')->with('status', 'Erro ao cadastrar usuário!');
 
     }
+
+    public function edit(GrupoMusical $grupo)
+    {
+        $grupo->load('coordenador');
+        $coordenadores = CoordenadorGrupo::with('user')->get();
+        return view('grupos.edit', compact('grupo', 'coordenadores'));
+    }
 }

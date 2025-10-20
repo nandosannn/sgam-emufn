@@ -15,7 +15,7 @@
                 </button>
             </form>
 
-            <a href="#" class="btn btn-outline-primary btn-sm">
+            <a href="{{route('edit.grupos', $grupo)}}" class="btn btn-outline-primary btn-sm">
                 <i class="bi bi-gear-fill"></i> Editar
             </a>
         </div>
