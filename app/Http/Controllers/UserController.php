@@ -78,9 +78,6 @@ class UserController extends Controller
                 'user_id' => $user->id
             ]);
             if ($perfil) {
-
-                if ($perfil->tipo_perfil == 'coordenador') {
-                }
                 return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
             }
         }

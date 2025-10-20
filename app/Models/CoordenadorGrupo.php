@@ -16,4 +16,9 @@ class CoordenadorGrupo extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function grupo()
+    {
+        return $this->hasMany(GrupoMusical::class);
+    }
 }

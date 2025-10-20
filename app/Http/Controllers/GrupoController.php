@@ -16,7 +16,6 @@ class GrupoController extends Controller
             $query->where('nome', 'like', '%'.$request->nome.'%');
         }
 
-
         $grupos = $query->paginate(8);
         return view('grupos.index', compact('grupos'));
     }
@@ -24,5 +23,26 @@ class GrupoController extends Controller
     public function create(){
         $coordenadores = CoordenadorGrupo::with('user')->where('ativo', true)->get();
         return view('grupos.create', compact('coordenadores'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nome' => 'required',
+            'data' => 'required|date',
+            'coordenador' => 'required|exists:coordenador_grupo,id'
+        ]);
+        $grupo = GrupoMusical::create([
+            'nome' => $request->nome,
+            'dataFundacao' => $request->data,
+            'coordenador_id' => $request->coordenador
+        ]);
+
+        if($grupo){
+            return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
+        }
+
+        return redirect()->route('create.grupos')->with('status', 'Erro ao cadastrar usuário!');
+
     }
 }

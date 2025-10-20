@@ -40,7 +40,7 @@
     @if (count($grupos) > 0)
     <div class="row gap-4">
         @foreach($grupos as $grupo)
-        @include('grupos.parts.card_grupo', ['grupo' => $grupo])
+        @include('grupos.parts.cards_grupo', ['grupo' => $grupo])
         @endforeach
     </div>
     @else
