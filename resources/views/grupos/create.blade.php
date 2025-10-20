@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="mb-3 col-6">
-                            <label for="data" class="form-label">CPF</label>
+                            <label for="data" class="form-label">Dada de Fundação</label>
                             <input type="date" name="data" class="form-control @error('data') is-invalid @enderror"
                                 id="data" value="">
                             @error('data')
