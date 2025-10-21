@@ -84,15 +84,25 @@
                     <tbody>
                         @foreach ($eventos as $evento)
                         <tr>
-                            <td>{{ $evento->nome }}</td>
-                            <td>{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
-                            <td>{{ $evento->endereco->logradouro }}</td>
-                            <td>{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-outline-primary">
+                            <td class="text-wrap">{{ $evento->nome }}</td>
+                            <td class="text-wrap">{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
+                            <td class="text-wrap">{{ $evento->endereco->logradouro }}</td>
+                            <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
+                            <td class="text-center text-wrap">
+                                <a href="#" class="btn btn-outline-warning btn-sm mb-1">
+                                    <i class="bi bi-gear-fill"></i> Editar
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-primary mb-1">
                                     <i class="bi bi-eye"></i>
                                     Fazer Solicitação
-                                </button>
+                                </a>
+                                <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash-fill"></i> Excluir
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
