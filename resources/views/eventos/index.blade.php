@@ -88,19 +88,18 @@
                             <td class="text-wrap">{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
                             <td class="text-wrap">{{ $evento->endereco->logradouro }}</td>
                             <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
-                            <td class="text-center text-wrap">
-                                <a href="#" class="btn btn-outline-warning btn-sm mb-1">
-                                    <i class="bi bi-gear-fill"></i> Editar
+                            <td class="text-center d-flex gap-2 align-items-center justify-content-center">
+                                <a href="#" class="btn btn-outline-warning btn-sm mb-1" title="Editar">
+                                    <i class="bi bi-gear-fill"></i>
                                 </a>
-                                <a href="#" class="btn btn-sm btn-outline-primary mb-1">
+                                <a href="#" class="btn btn-sm btn-outline-primary mb-1" title="Fazer Solicitação">
                                     <i class="bi bi-eye"></i>
-                                    Fazer Solicitação
                                 </a>
                                 <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">
-                                        <i class="bi bi-trash-fill"></i> Excluir
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Excluir">
+                                        <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </form>
                             </td>
