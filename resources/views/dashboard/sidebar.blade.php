@@ -97,7 +97,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ Request::is('grupos*') ? 'menu-open' : ''  }}">
                         <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
                             Solicitações
@@ -107,9 +107,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Lista de Solicitações</p>
+                            <a href="{{ route('index.eventos') }}" class="nav-link {{ Request::routeIs('index.eventos') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Lista de Eventos</p>
                             </a>
                         </li>
                     </ul>

@@ -10,7 +10,7 @@ class GrupoController extends Controller
 {
     public function index(Request $request)
     {
-         $query = GrupoMusical::with('coordenador');
+        $query = GrupoMusical::with('coordenador');
 
         if($request->filled('nome')){
             $query->where('nome', 'like', '%'.$request->nome.'%');

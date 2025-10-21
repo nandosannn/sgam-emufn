@@ -1,6 +1,6 @@
 @extends('layout.default')
 
-@section('title-aba', 'SGAM | Lista de Grupos')
+@section('title-aba', 'SGAM | Lista de Solicitações')
 
 @section('content')
 
@@ -9,6 +9,26 @@
         outline: none !important;
         box-shadow: none !important;
         border-color: #1a70c7ff !important;
+    }
+
+    .table thead th {
+        font-weight: 600;
+        color: #4a4a4a;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .card {
+        border-radius: 1rem;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+        padding: 0.4em 0.6em;
     }
 </style>
 
@@ -19,8 +39,8 @@
 @endsession
 <div class="container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
     <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
-        <h5 class="fs-3 fw-bold">Grupos</h5>
-        <form method="GET" action="{{ route('index.grupos') }}">
+        <h5 class="fs-3 fw-bold">Eventos Cadastrados</h5>
+        <form method="GET" action="{{ route('index.eventos') }}">
             <div class="row g-3">
                 <div class="col-md-7">
                     <input type="text" class="form-control" id="nome" name="nome"
@@ -30,25 +50,66 @@
                     <button type="submit" class="btn btn-primary me-2">
                         <i class="fas fa-search"></i> Filtrar
                     </button>
-                    <a href="{{ route('index.grupos') }}" class="btn btn-secondary">
+                    <a href="{{ route('index.eventos') }}" class="btn btn-secondary">
                         <i class="fas fa-times"></i> Limpar
                     </a>
                 </div>
             </div>
         </form>
     </div>
-    @if (count($grupos) > 0)
-    <div class="row">
+    @if (count($eventos) > 0)
+    <div class="card shadow-sm border-0 mt-3">
+        <div class="card-header bg-white border-0">
+            <h5 class="fw-bold text-primary m-0 d-flex align-items-center">
+                <i class="bi bi-calendar-event me-2"></i> Eventos
+            </h5>
+            <div class="d-flex align-items-center justify-content-end">
+                <button class="btn btn-sm btn-outline-primary me-1">Excel</button>
+                <button class="btn btn-sm btn-outline-secondary">CSV</button>
+            </div>
+        </div>
 
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Endereco</th>
+                            <th scope="col">Responável</th>
+                            <th scope="col" class="text-center">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($eventos as $evento)
+                        <tr>
+                            <td>{{ $evento->nome }}</td>
+                            <td>{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
+                            <td>{{ $evento->endereco->logradouro }}</td>
+                            <td>{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                    Fazer Solicitação
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer text-end small text-muted bg-white border-0">
+            {{ $eventos->links() }}
+        </div>
     </div>
     @else
     <div class="d-flex justify-content-center">
-        <h3>Nenhum Grupo Cadastrado</h3>
+        <h3>Nenhum Evento Cadastrado</h3>
     </div>
     @endif
-</div>
-<div class="p-3">
-    {{ $grupos->links() }}
 </div>
 
 @endsection

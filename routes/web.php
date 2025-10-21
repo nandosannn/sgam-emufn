@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,5 +24,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
     Route::delete('grupos/{grupo}', [GrupoController::class, 'destroy'])->name('destroy.grupos');
+
+    Route::get('evento', [EventoController::class, 'index'])->name('index.eventos');
 });
 
