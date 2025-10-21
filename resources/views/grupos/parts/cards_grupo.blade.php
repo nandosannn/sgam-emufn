@@ -7,7 +7,7 @@
         <p class="fst-italic mb-4 text-break"><strong>Coordenador: </strong>{{$grupo?->coordenador?->user?->nome.' '.$grupo?->coordenador?->user?->sobrenome}}</p>
 
         <div class="d-flex justify-content-start gap-2 mt-3">
-            <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
+            <form action="{{ route('destroy.grupos', $grupo) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-outline-danger btn-sm">

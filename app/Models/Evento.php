@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Evento extends Model
+{
+    protected $table = 'evento';
+
+    protected $fillable = [
+        'user_id',
+        'endereco_id',
+        'nome',
+        'descricao',
+        'data'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function endereco(){
+        return $this->belongsTo(Endereco::class);
+    }
+}

@@ -3,7 +3,7 @@
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
 <style>
-    .form-control:focus {
+    .form-control:focus, .form-select:focus {
         outline: none !important;
         box-shadow: none !important;
         border-color: #1a70c7ff !important;
@@ -113,7 +113,7 @@
                     <div class="mb-3">
                         <label for="tipoPerfil" class="form-label">Tipo do Perfil</label>
                         <select name="tipo_perfil" id="tipo_perfil"
-                            class="form-control @error('tipo_perfil') is-invalid @enderror">
+                            class="form-select @error('tipo_perfil') is-invalid @enderror">
                             <option value="solicitante">Solicitante</option>
                             <option value="coordenador">Coordenador</option>
                         </select>

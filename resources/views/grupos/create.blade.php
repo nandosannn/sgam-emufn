@@ -3,7 +3,7 @@
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
 <style>
-    .form-control:focus {
+    .form-control:focus, .form-select:focus {
         outline: none !important;
         box-shadow: none !important;
         border-color: #1a70c7ff !important;
@@ -46,7 +46,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="coordenador" class="form-label">Coordenador</label>
-                        <select class="form-control @error('coordenador') is-invalid @enderror" name="coordenador"
+                        <select class="form-select @error('coordenador') is-invalid @enderror" name="coordenador"
                             id="coordenador">
                             <option value="">Selecione</option>
                             @foreach ($coordenadores as $coordenador)

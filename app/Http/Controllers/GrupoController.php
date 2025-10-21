@@ -69,4 +69,10 @@ class GrupoController extends Controller
 
         return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
     }
+
+    public function destroy(GrupoMusical $grupo){
+        $grupo->delete();
+
+        return redirect()->route('index.grupos')->with('status', 'Grupo deletado com sucesso');
+    }
 }

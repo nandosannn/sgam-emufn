@@ -1,3 +1,11 @@
+<style>
+    .form-control:focus, .form-select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #1a70c7ff !important;
+    }
+</style>
+
 <div class="card">
     <form action="{{route('updateprofile.users', $user)}}" method="POST">
         @csrf
@@ -7,24 +15,6 @@
         </div>
 
         <div class="card-body">
-            <div class="mb-3">
-                <label for="tipo_perfil" class="form-label">Tipo</label>
-                <select class="form-control @error('tipo_perfil') is-invalid @enderror" name="tipo_perfil" id="tipo_perfil">
-                    @foreach (['solicitante', 'coordenador', 'administrador'] as $item)
-                        <option
-                            value="{{$item}}"
-                            @selected(old('tipo_perfil') ===  $item || $user?->perfil?->tipoPerfil === $item)
-                        >
-                            {{ $item }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('tipo_perfil')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
             <div class="mb-3">
                 <label for="ocupacao" class="form-label">Ocupação</label>
                 <input value="{{old('ocupacao') ?? $user?->perfil?->ocupacao}}" type="ocupacao" name="ocupacao" id="ocupacao" class="form-control @error('ocupacao') is-invalid @enderror">
@@ -59,7 +49,7 @@
 
             <div class="mb-3">
                 <label for="tipoPerfil" class="form-label">Tipo do Perfil</label>
-                <select name="tipo_perfil" id="tipo_perfil" class="form-control @error('tipo_perfil') is-invalid @enderror">
+                <select name="tipo_perfil" id="tipo_perfil" class="form-select @error('tipo_perfil') is-invalid @enderror">
                     <option value="solicitante" {{ $user?->perfil?->tipoPerfil == 'solicitante' ? 'selected' : '' }}>Solicitante</option>
                     <option value="coordenador" {{ $user?->perfil?->tipoPerfil == 'coordenador' ? 'selected' : '' }}>Coordenador</option>
                 </select>

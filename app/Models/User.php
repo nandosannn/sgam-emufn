@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,5 +56,9 @@ class User extends Authenticatable
 
     public function coordenador(){
         return $this->hasMany(CoordenadorGrupo::class);
+    }
+
+    public function evento(){
+        return $this->hasMany(Evento::class);
     }
 }

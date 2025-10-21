@@ -1,3 +1,11 @@
+<style>
+    .form-control:focus, .form-select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #1a70c7ff !important;
+    }
+</style>
+
 <div class="card">
     <form action="{{ route('update.users', $user) }}" method="POST">
         @csrf
