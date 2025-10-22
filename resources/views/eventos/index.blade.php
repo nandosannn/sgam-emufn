@@ -89,11 +89,11 @@
                             <td class="text-wrap">{{ $evento->endereco->logradouro }}</td>
                             <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
                             <td class="text-center d-flex gap-2 align-items-center justify-content-center">
+                                <a href="#" class="btn btn-sm btn-outline-primary mb-1" title="Fazer Solicitação">
+                                    <i class="bi bi-clipboard2-check-fill"> Fazer solicitação</i>
+                                </a>
                                 <a href="#" class="btn btn-outline-warning btn-sm mb-1" title="Editar">
                                     <i class="bi bi-gear-fill"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-outline-primary mb-1" title="Fazer Solicitação">
-                                    <i class="bi bi-eye"></i>
                                 </a>
                                 <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
                                     @method('DELETE')
@@ -109,10 +109,11 @@
                 </table>
             </div>
         </div>
-
+        @if ($eventos->count()>=8)
         <div class="card-footer text-end small text-muted bg-white border-0">
             {{ $eventos->links() }}
         </div>
+        @endif
     </div>
     @else
     <div class="d-flex justify-content-center">

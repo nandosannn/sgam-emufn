@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="mb-3 col-6">
-                <label for="data_evento" class="form-label">Data e Hora do Evento:</label>
+                <label for="data" class="form-label">Data e Hora do Evento:</label>
                 <input type="datetime-local" class="form-control @error('data') is-invalid @enderror"
                     id="data" name="data" value="{{ old('data') }}">
                 @error('data')
