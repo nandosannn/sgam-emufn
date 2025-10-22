@@ -16,6 +16,7 @@
         <form action="#" method="POST">
             @csrf
             @include('eventos.parts.card_dados_evento', ['user' => $user])
+            @include('eventos.parts.card_dados_endereco')
             <div class="card-footer text-end">
                 <button type="submit" class="btn btn-primary text-end">Adicionar</button>
             </div>
