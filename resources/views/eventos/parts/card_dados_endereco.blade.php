@@ -1,8 +1,4 @@
-<div class="card mb-3">
-    <div class="card-header fs-5">
-        Dados do Endereco
-    </div>
-
+<div class="card border-light mb-3">
     <div class="card-body">
         <div class="row">
             <div class="mb-3 col-6">

@@ -1,7 +1,4 @@
-<div class="card mb-3">
-    <div class="card-header fs-5">
-        Dados do Evento
-    </div>
+<div class="card border-light mb-3">
 
     <div class="card-body">
         <div class="row">
@@ -10,9 +7,9 @@
                 <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror"
                     id="name" value="">
                 @error('nome')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
         </div>
@@ -22,9 +19,9 @@
                 <input type="datetime-local" class="form-control @error('data') is-invalid @enderror"
                     id="data" name="data" value="{{ old('data') }}">
                 @error('data')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
             <div class="mb-3 col-6">
@@ -34,9 +31,9 @@
                 <input readonly type="text" class="form-control" value="{{ $user->nome . ' ' . $user->sobrenome }}"
                     style="background-color: rgb(247, 247, 247)">
                 @error('user_id')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
         </div>
@@ -49,9 +46,9 @@
             </textarea>
 
             @error('descricao')
-                <div class="invalid-feedback d-block">
-                    {{ $message }}
-                </div>
+            <div class="invalid-feedback d-block">
+                {{ $message }}
+            </div>
             @enderror
         </div>
     </div>
