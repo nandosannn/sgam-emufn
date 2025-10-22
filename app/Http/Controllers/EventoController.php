@@ -109,4 +109,10 @@ class EventoController extends Controller
         }
         return redirect()->route('edit.eventos', $evento)->with(['error' => 'Evento não cadastrado!']);
     }
+
+    public function destroy(Evento $evento){
+
+        $evento->delete();
+        return redirect()->route('index.eventos')->with('status', 'Evento excluído com sucesso');
+    }
 }

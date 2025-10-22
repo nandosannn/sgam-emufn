@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('eventos/store', [EventoController::class, 'store'])->name('store.eventos');
     Route::get('eventos/{evento}', [EventoController::class, 'edit'])->name('edit.eventos');
     Route::put('eventos/{evento}', [EventoController::class, 'update'])->name('update.eventos');
+    Route::delete('eventos/{evento}', [EventoController::class, 'destroy'])->name('destroy.eventos');
 
 });
 

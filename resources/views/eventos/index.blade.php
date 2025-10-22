@@ -63,22 +63,18 @@
             <h5 class="fw-bold text-primary m-0 d-flex align-items-center">
                 <i class="bi bi-calendar-event me-2"></i> Eventos
             </h5>
-            <div class="d-flex align-items-center justify-content-end">
-                <button class="btn btn-sm btn-outline-primary me-1">Excel</button>
-                <button class="btn btn-sm btn-outline-secondary">CSV</button>
-            </div>
         </div>
 
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
+                <table class="table table-hover align-middle mb-0 p-2">
                     <thead class="table-light">
                         <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Endereco</th>
-                            <th scope="col">Responável</th>
-                            <th scope="col" class="text-center">Ação</th>
+                            <th scope="col" style="width: 20%">Nome</th>
+                            <th scope="col" style="width: 10%">Data</th>
+                            <th scope="col" style="width: 35%">Endereço</th>
+                            <th scope="col" style="width: 20%">Responsável</th>
+                            <th scope="col" class="text-center" style="width: 15%">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,22 +82,25 @@
                         <tr>
                             <td class="text-wrap">{{ $evento->nome }}</td>
                             <td class="text-wrap">{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
-                            <td class="text-wrap">{{ $evento->endereco->logradouro }}</td>
+                            <td class="text-wrap text-break">{{ $evento->endereco->logradouro }}</td>
                             <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
-                            <td class="text-center d-flex gap-2 align-items-center justify-content-center">
-                                <a href="#" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
-                                    <i class="bi bi-clipboard2-check-fill">Fazer solicitação</i>
-                                </a>
-                                <a href="{{route('edit.eventos', $evento)}}" class="btn btn-outline-secondary btn-sm" title="Editar">
-                                    <i class="bi bi-gear-fill"></i>
-                                </a>
-                                <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-danger btn-sm" title="Excluir">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </button>
-                                </form>
+                            <td class="text-center text-wrap">
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="#" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
+                                        <i class="bi bi-clipboard2-check-fill"></i> Fazer solicitação
+                                    </a>
+                                    <a href="{{ route('edit.eventos', $evento) }}" class="btn btn-outline-secondary btn-sm" title="Editar">
+                                        <i class="bi bi-gear-fill"></i>
+                                    </a>
+                                    <form action="{{ route('destroy.eventos', $evento) }}" method="POST"
+                                        onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" title="Excluir">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -109,11 +108,9 @@
                 </table>
             </div>
         </div>
-        @if ($eventos->count()>=8)
         <div class="card-footer text-end small text-muted bg-white border-0">
             {{ $eventos->links() }}
         </div>
-        @endif
     </div>
     @else
     <div class="d-flex justify-content-center">
