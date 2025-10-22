@@ -89,10 +89,10 @@
                             <td class="text-wrap">{{ $evento->endereco->logradouro }}</td>
                             <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
                             <td class="text-center d-flex gap-2 align-items-center justify-content-center">
-                                <a href="#" class="btn btn-sm btn-outline-primary mb-1" title="Fazer Solicitação">
-                                    <i class="bi bi-clipboard2-check-fill"> Fazer solicitação</i>
+                                <a href="#" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
+                                    <i class="bi bi-clipboard2-check-fill">Fazer solicitação</i>
                                 </a>
-                                <a href="#" class="btn btn-outline-warning btn-sm mb-1" title="Editar">
+                                <a href="{{route('edit.eventos', $evento)}}" class="btn btn-outline-secondary btn-sm" title="Editar">
                                     <i class="bi bi-gear-fill"></i>
                                 </a>
                                 <form action="#" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir?')">

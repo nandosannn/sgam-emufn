@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('eventos', [EventoController::class, 'index'])->name('index.eventos');
     Route::get('eventos/create', [EventoController::class, 'create'])->name('create.eventos');
     Route::post('eventos/store', [EventoController::class, 'store'])->name('store.eventos');
+    Route::get('eventos/{evento}', [EventoController::class, 'edit'])->name('edit.eventos');
+    Route::put('eventos/{evento}', [EventoController::class, 'update'])->name('update.eventos');
 
 });
 

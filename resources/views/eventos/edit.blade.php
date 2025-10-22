@@ -1,6 +1,6 @@
 @extends('layout.default')
 
-@section('title-aba', 'SGAM | Adicionar Evento')
+@section('title-aba', 'SGAM | Editar Evento')
 
 @section('content')
 
@@ -17,15 +17,14 @@
     {{ $value }}
 </div>
 @endsession
-
     <div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
-        <div class="fs-4 fw-bold mb-4">Criar Evento</div>
-        <form action="{{route('store.eventos')}}" method="POST">
+        <div class="fs-4 fw-bold mb-4">Editar Evento</div>
+        <form action="{{route('update.eventos', $evento)}}" method="POST">
+            @method('PUT')
             @csrf
-            @include('eventos.parts.card_dados_evento', ['user' => $user])
-            @include('eventos.parts.card_dados_endereco')
+            @include('eventos.parts.card_edit_evento', ['evento' => $evento])
             <div class="card-footer text-end">
-                <button type="submit" class="btn btn-primary text-end">Adicionar</button>
+                <button type="submit" class="btn btn-primary text-end">Editar</button>
             </div>
         </form>
     </div>

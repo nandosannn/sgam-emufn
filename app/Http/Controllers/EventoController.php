@@ -61,11 +61,52 @@ class EventoController extends Controller
                 'data' => $request->data
             ]);
 
-            if($evento){
+            if ($evento) {
                 return redirect()->route('index.eventos')->with(['status' => 'Evento cadastrado com sucesso']);
             }
         }
-
         return redirect()->route('create.eventos')->with(['error' => 'Evento não cadastrado!']);
+    }
+    public function edit(Evento $evento)
+    {
+        return view('eventos.edit', compact('evento'));
+    }
+
+    public function update(Request $request, Evento $evento)
+    {
+        $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'data' => ['required', 'date_format:Y-m-d\TH:i'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'descricao' => ['required', 'string', 'max:5000'],
+            'logradouro' => ['required', 'string', 'max:255'],
+            'numero' => ['required', 'string', 'max:10'],
+            'bairro' => ['required', 'string', 'max:100'],
+            'cidade' => ['required', 'string', 'max:100'],
+            'estado' => ['required', 'string', 'min:2', 'max:40'],
+        ]);
+
+        $endereco = Endereco::find($evento->endereco_id);
+
+        if ($endereco) {
+            $endereco->update([
+                'numero' => $request->numero,
+                'logradouro' => $request->logradouro,
+                'bairro' => $request->bairro,
+                'cidade' => $request->cidade,
+                'estado' => $request->estado
+            ]);
+
+            $evento->update([
+                'user_id' => $request->user_id,
+                'endereco_id' => $endereco->id,
+                'nome' => $request->nome,
+                'descricao'  => $request->descricao,
+                'data' => $request->data
+            ]);
+
+            return redirect()->route('index.eventos')->with(['status' => 'Evento atualizado com sucesso']);
+        }
+        return redirect()->route('edit.eventos', $evento)->with(['error' => 'Evento não cadastrado!']);
     }
 }
