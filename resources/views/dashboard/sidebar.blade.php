@@ -97,7 +97,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ Request::is('grupos*') ? 'menu-open' : ''  }}">
+                    <a href="#" class="nav-link {{ Request::is('eventos*') ? 'menu-open' : ''  }}">
                         <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
                             Solicitações
@@ -105,6 +105,14 @@
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('create.eventos') }}" class="nav-link {{ Request::routeIs('create.eventos') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Criar Evento</p>
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('index.eventos') }}" class="nav-link {{ Request::routeIs('index.eventos') ? 'active' : '' }}">

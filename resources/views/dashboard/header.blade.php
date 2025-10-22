@@ -26,7 +26,7 @@
                              style="width: 80px; height: 80px;">
                          </div>
                          <p class="mt-2">
-                             {{ auth()->user()->name.' '.auth()->user()->sobrenome }}
+                             {{auth()->user()->nome.' '.auth()->user()->sobrenome }}
                          </p>
                      </li>
                      <!--end::User Image-->
