@@ -79,7 +79,7 @@
                     </thead>
                     <tbody>
                         @foreach ($eventos as $evento)
-                        <tr>
+                        <tr >
                             <td class="text-wrap">{{ $evento->nome }}</td>
                             <td class="text-wrap">{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
                             <td class="text-wrap text-break">{{ $evento->endereco->logradouro }}</td>
@@ -108,7 +108,7 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer text-end small text-muted bg-white border-0">
+        <div class="card-footer text-end small text-muted bg-white border-0 mt-3">
             {{ $eventos->links() }}
         </div>
     </div>

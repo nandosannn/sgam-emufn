@@ -18,10 +18,10 @@ class Evento extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,   'user_id', 'id');
     }
 
     public function endereco(){
-        return $this->belongsTo(Endereco::class);
+        return $this->belongsTo(Endereco::class, 'endereco_id', 'id');
     }
 }
