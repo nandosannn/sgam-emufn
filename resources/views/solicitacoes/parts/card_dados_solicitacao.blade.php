@@ -1,5 +1,15 @@
 <div class="card border-light mb-3">
     <div class="card-body">
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Justificativa</label>
+            <textarea class="form-control p-0 m-0 @error('descricao') is-invalid @enderror" name="descricao" id="descricao" cols="0"
+                rows="5">   </textarea>
+            @error('descricao')
+            <div class="invalid-feedback d-block">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
         <div class="row">
             <div class="mb-3 col-6">
                 <label for="nome" class="form-label">Nome</label>
@@ -36,8 +46,8 @@
             <div class="mb-3 col-6">
                 <label for="user_id" class="form-label">Responsável</label>
                 <input type="hidden" name="user_id" class="form-control @error('user_id') is-invalid @enderror"
-                    id="user_id" value="{{ $user->id }}">
-                <input readonly type="text" class="form-control" value="{{ $user->nome . ' ' . $user->sobrenome }}"
+                    id="user_id" value="">
+                <input readonly type="text" class="form-control" value=""
                     style="background-color: rgb(247, 247, 247)">
                 @error('user_id')
                 <div class="invalid-feedback">
@@ -45,18 +55,6 @@
                 </div>
                 @enderror
             </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição do Evento</label>
-            <textarea class="form-control p-0 m-0 @error('descricao') is-invalid @enderror" name="descricao" id="descricao" cols="0"
-                rows="5">   </textarea>
-
-            @error('descricao')
-            <div class="invalid-feedback d-block">
-                {{ $message }}
-            </div>
-            @enderror
         </div>
     </div>
 </div>

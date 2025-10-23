@@ -86,7 +86,7 @@
                             <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
                             <td class="text-center text-wrap">
                                 <div class="d-flex gap-2 justify-content-center flex-wrap">
-                                    <a href="#" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
+                                    <a href="{{ route('create.silicitacoes', $evento) }}" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
                                         <i class="bi bi-clipboard2-check-fill"></i> Fazer solicitação
                                     </a>
                                     <a href="{{ route('edit.eventos', $evento) }}" class="btn btn-outline-secondary btn-sm" title="Editar">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\SolicitacaoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,6 @@ Route::middleware(['auth'])->group(function(){
     Route::put('eventos/{evento}', [EventoController::class, 'update'])->name('update.eventos');
     Route::delete('eventos/{evento}', [EventoController::class, 'destroy'])->name('destroy.eventos');
 
+    Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
 });
 
