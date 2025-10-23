@@ -2,10 +2,10 @@
 
 <style>
     .bg-body-secondary{
-        background-color: #00205f !important;
+        background-color: rgba(17, 50, 114, 1) !important;
     }
     .sidebar-brand {
-        border-bottom: 1px solid #001746;
+        border-bottom: 1px solid rgb(14, 42, 97);
     }
 </style>
 <aside class="app-sidebar bg-body-secondary shadow sidebar-liberation sidebar-menu" data-bs-theme="dark">
