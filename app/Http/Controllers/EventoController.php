@@ -34,6 +34,7 @@ class EventoController extends Controller
     {
         $request->validate([
             'nome' => ['required', 'string', 'max:255'],
+            'cargo_responsavel' => ['required', 'string', 'max:255'],
             'data' => ['required', 'date_format:Y-m-d\TH:i'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'descricao' => ['required', 'string', 'max:5000'],
@@ -58,7 +59,8 @@ class EventoController extends Controller
                 'endereco_id' => $endereco->id,
                 'nome' => $request->nome,
                 'descricao'  => $request->descricao,
-                'data' => $request->data
+                'data' => $request->data,
+                'cargo_responsavel' =>  $request->cargo_responsavel
             ]);
 
             if ($evento) {
@@ -76,6 +78,7 @@ class EventoController extends Controller
     {
         $request->validate([
             'nome' => ['required', 'string', 'max:255'],
+            'cargo_responsavel' => ['required', 'string', 'max:255'],
             'data' => ['required', 'date_format:Y-m-d\TH:i'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'descricao' => ['required', 'string', 'max:5000'],
@@ -102,7 +105,8 @@ class EventoController extends Controller
                 'endereco_id' => $endereco->id,
                 'nome' => $request->nome,
                 'descricao'  => $request->descricao,
-                'data' => $request->data
+                'data' => $request->data,
+                'cargo_responsavel' =>  $request->cargo_responsavel
             ]);
 
             return redirect()->route('index.eventos')->with(['status' => 'Evento atualizado com sucesso']);

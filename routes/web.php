@@ -32,5 +32,8 @@ Route::middleware(['auth'])->group(function(){
     Route::put('eventos/{evento}', [EventoController::class, 'update'])->name('update.eventos');
     Route::delete('eventos/{evento}', [EventoController::class, 'destroy'])->name('destroy.eventos');
 
+    
+
+
 });
 

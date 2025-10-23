@@ -13,7 +13,8 @@ class Evento extends Model
         'endereco_id',
         'nome',
         'descricao',
-        'data'
+        'data',
+        'cargo_responsavel'
     ];
 
     public function user(){

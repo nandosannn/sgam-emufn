@@ -1,11 +1,11 @@
-<div class="card mb-3">
+<div class="card border-light mb-3">
     <div class="card-header fs-5">
         Dados do Evento
     </div>
 
     <div class="card-body">
         <div class="row">
-            <div class="mb-3 col-12">
+            <div class="mb-3 col-6">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror"
                     id="name" value="{{ $evento->nome }}">
@@ -13,6 +13,17 @@
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
+                @enderror
+            </div>
+
+            <div class="mb-3 col-6">
+                <label for="cargo_responsavel" class="form-label">Cargo Responsável</label>
+                <input type="text" name="cargo_responsavel" class="form-control @error('cargo_responsavel') is-invalid @enderror"
+                    id="cargo_responsavel" value="{{ $evento->cargo_responsavel }}">
+                @error('cargo_responsavel')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
         </div>
@@ -59,7 +70,7 @@
     </div>
 </div>
 
-<div class="card mb-3">
+<div class="card border-light mb-3">
     <div class="card-header fs-5">
         Dados do Endereco
     </div>
