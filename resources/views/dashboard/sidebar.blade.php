@@ -1,4 +1,13 @@
 <!--begin::Sidebar-->
+
+<style>
+    .bg-body-secondary{
+        background-color: #00205f !important;
+    }
+    .sidebar-brand {
+        border-bottom: 1px solid #001746;
+    }
+</style>
 <aside class="app-sidebar bg-body-secondary shadow sidebar-liberation sidebar-menu" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
@@ -101,7 +110,8 @@
                         <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
                             Solicitações
-                            <span class="nav-badge badge text-bg-secondary me-3">6</span>
+                            <!--
+                            <span class="nav-badge badge text-bg-secondary me-3">6</span>-->
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
