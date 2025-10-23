@@ -7,8 +7,20 @@
     .sidebar-brand {
         border-bottom: 1px solid rgb(14, 42, 97);
     }
+
+    .font {
+        font-family: 'Liberation Sans', Arial, sans-serif !important;
+        font-size: 0.875rem !important; /* ~14px */
+        font-weight: bold !important;
+    }
+
+    .font-logo{
+        font-family: 'Liberation Sans', Arial, sans-serif !important;
+        font-size: 1.4rem !important;
+        font-weight: bold !important;
+    }
 </style>
-<aside class="app-sidebar bg-body-secondary shadow sidebar-liberation sidebar-menu" data-bs-theme="dark">
+<aside class="font app-sidebar bg-body-secondary shadow sidebar-menu" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
         <!--begin::Brand Link-->
@@ -18,7 +30,7 @@
                 class="brand-image opacity-75 shadow" />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">SGAM</span>
+            <span class="font-logo brand-text fw-light">SGAM</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -150,7 +162,7 @@
                         <li class="nav-item">
                             <a href="./UI/icons.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Solicitações Sem Grupos</p>
+                                <p class="text-break">Solicitações Sem Grupos</p>
                             </a>
                         </li>
                         <li class="nav-item">
