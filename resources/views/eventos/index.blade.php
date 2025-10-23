@@ -73,8 +73,8 @@
                             <th scope="col" style="width: 20%">Nome</th>
                             <th scope="col" style="width: 10%">Data</th>
                             <th scope="col" style="width: 35%">Endereço</th>
-                            <th scope="col" style="width: 20%">Responsável</th>
-                            <th scope="col" class="text-center" style="width: 15%">Ação</th>
+                            <th scope="col" style="width: 15%">Responsável</th>
+                            <th scope="col" class="text-center" style="width: 20%">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
