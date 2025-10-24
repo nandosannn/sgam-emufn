@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Solicitacao;
 use Illuminate\Http\Request;
 
 class SolicitacaoController extends Controller
@@ -12,6 +13,26 @@ class SolicitacaoController extends Controller
     }
 
     public function store(Request $request){
-        
+        $request->validate([
+            'evento_id' => ['required', 'integer', 'exists:evento,id'],
+            'justificativa' => ['required', 'string', 'max:5000'],
+            'status' => ['required', 'string', 'max:5000'],
+            'confirmacao_lanche' => ['required', 'boolean'],
+        ]);
+
+        $solicitacao = Solicitacao::create(
+            [
+                'evento_id' => $request->evento_id,
+                'justificativa' => $request->justificativa,
+                'status' => $request->status,
+                'confirmacao_lanche' => $request->confirmacao_lanche
+            ]
+        );
+
+        if($solicitacao){
+            return redirect()->route('index.eventos')->with('status', 'Solicitação de grupo musical enviada com sucesso');
+        }
+
+        return redirect()->route('index.eventos')->with('error', 'Erro ao enviar solicitação');
     }
 }

@@ -93,7 +93,7 @@
         <div class="mb-3">
             <label for="status" class=" form-label form-label">Status Solicitação</label>
             <input type="hidden" name="status" class="form-control @error('status') is-invalid @enderror"
-                id="status" value="">
+                id="status" value="Aguadando disponibilidade de grupo">
             <input readonly type="text" name="" class="form-control" id=""
                 value="Aguadando disponibilidade de grupo" style="background-color: rgb(247, 247, 247); font-style: italic;">
             @error('status')
