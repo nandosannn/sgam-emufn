@@ -37,8 +37,8 @@
 }
 
 .btn-outline-primary:hover {
-    background-color: #0095DB !important;
-    border-color: #0095DB !important;
+    background-color: #164194 !important;
+    border-color: #164194 !important;
     color: #fff !important;
     font-weight: bold !important;
 }
@@ -50,8 +50,8 @@
 }
 
 .btn-outline-danger:hover {
-    background-color: #F58784 !important;
-    border-color: #F58784 !important;
+    background-color: #A94442 !important;
+    border-color: #A94442 !important;
     color: #fff !important;
     font-weight: bold !important;
 }
@@ -118,7 +118,7 @@ label {
 }
 
 .icone {
-    color: #0095DB !important;
+    color: #164194 !important;
 }
 
 input {
