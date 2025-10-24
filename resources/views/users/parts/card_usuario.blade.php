@@ -1,4 +1,4 @@
-<div class="card shadow-sm border-0" style="width: 20rem;">
+<div class="card border-light shadow-sm border-0" style="width: 20rem;">
     <div class="card-body">
         <div class="d-flex align-items-center gap-2 mb-3">
             <i class="bi bi-person-fill fs-4 text-primary"></i>

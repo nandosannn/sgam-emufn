@@ -1,8 +1,8 @@
  <form action="{{route('update.grupos', $grupo)}}" method="POST">
     @method('PUT')
      @csrf
-     <div class="card mb-3">
-         <div class="card-header fs-5">
+     <div class="card border-light mb-3">
+         <div class="title card-header fs-5">
              Dados do Grupo
          </div>
 

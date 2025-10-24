@@ -119,3 +119,15 @@ label {
 .icone {
     color: #0095DB !important;
 }
+
+input {
+    color: #4E4E4E !important;
+}
+
+textarea {
+    color: #4E4E4E !important;
+}
+
+select {
+    color: #4E4E4E !important;
+}

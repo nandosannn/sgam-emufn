@@ -1,5 +1,5 @@
 
-<div class="font card">
+<div class="font card border-light">
     <form action="{{ route('update.users', $user) }}" method="POST">
         @csrf
         @method('PUT')

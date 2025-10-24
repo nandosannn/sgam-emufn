@@ -57,9 +57,7 @@
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição do Evento</label>
             <textarea class="form-control p-0 m-0 @error('descricao') is-invalid @enderror" name="descricao" id="descricao" cols="0"
-                rows="5">
-            {{ $evento->descricao }}
-            </textarea>
+                rows="5">   {{ $evento->descricao }}</textarea>
 
             @error('descricao')
                 <div class="invalid-feedback d-block">
