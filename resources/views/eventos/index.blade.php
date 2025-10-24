@@ -45,22 +45,23 @@
                             <th scope="col" style="width: 20%">Nome</th>
                             <th scope="col" style="width: 10%">Data</th>
                             <th scope="col" style="width: 35%">Endereço</th>
-                            <th scope="col" style="width: 15%">Responsável</th>
+                            <th scope="col" class="text-center" style="width: 15%">Status</th>
                             <th scope="col" class="text-center" style="width: 20%">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($eventos as $evento)
-                        <tr >
+                        <tr>
                             <td class="text-wrap">{{ $evento->nome }}</td>
                             <td class="text-wrap">{{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</td>
                             <td class="text-wrap text-break">{{ $evento->endereco->logradouro }}</td>
-                            <td class="text-wrap">{{ $evento->user->nome.' '.$evento->user->sobrenome }}</td>
+                            <td class="text-wrap text-center">
+                                <a href="{{ route('create.silicitacoes', $evento) }}" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
+                                    <i class="bi bi-clipboard2-check-fill"></i> Solicitar Grupo
+                                </a>
+                            </td>
                             <td class="text-center text-wrap">
                                 <div class="d-flex gap-2 justify-content-center flex-wrap">
-                                    <a href="{{ route('create.silicitacoes', $evento) }}" class="btn btn-sm btn-outline-primary" title="Fazer Solicitação">
-                                        <i class="bi bi-clipboard2-check-fill"></i> Fazer solicitação
-                                    </a>
                                     <a href="{{ route('edit.eventos', $evento) }}" class="btn btn-outline-secondary btn-sm" title="Editar">
                                         <i class="bi bi-gear-fill"></i>
                                     </a>

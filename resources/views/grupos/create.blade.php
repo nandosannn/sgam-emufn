@@ -7,7 +7,7 @@
         <div class="fs-4 fw-bold mb-4">Adicionar Grupo</div>
         <form action="{{ route('store.grupos') }}" method="POST">
             @csrf
-            <div class="card mb-3">
+            <div class="card border-light mb-3">
                 <div class="card-header fs-5">
                     Dados do Grupo
                 </div>
