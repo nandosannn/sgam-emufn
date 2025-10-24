@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
     Route::post('solicitacoes/store', [SolicitacaoController::class, 'store'])->name('store.silicitacoes');
+    Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
 
 });
 

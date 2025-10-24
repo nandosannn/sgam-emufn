@@ -35,4 +35,16 @@ class SolicitacaoController extends Controller
 
         return redirect()->route('index.eventos')->with('error', 'Erro ao enviar solicitação');
     }
+
+    public function index(Request $request){
+        $query = Solicitacao::with('informacoesGrupo', 'evento', 'transporte');
+
+        if($request->filled('status_filtro')){
+            $query->where('status', 'like', '%'. $request->status_filtro.'%');
+        }
+
+        $solicitacoes = $query->paginate(8);
+
+        return view('solicitacoes.index', compact('solicitacoes'));
+    }
 }

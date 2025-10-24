@@ -100,7 +100,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-clipboard-fill"></i>
                         <p>
-                            Solicitações
+                            Eventos
                             <!--
                             <span class="nav-badge badge text-bg-secondary me-3">6</span>-->
                             <i class="nav-arrow bi bi-chevron-right"></i>
@@ -119,6 +119,25 @@
                             <a href="{{ route('index.eventos') }}" class="nav-link {{ Request::routeIs('index.eventos') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-person-fill"></i>
                                 <p>Lista de Eventos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ Request::is('solicitacoes*') ? 'menu-open' : ''  }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-clipboard-fill"></i>
+                        <p>
+                            Solicitações
+                            <!--
+                            <span class="nav-badge badge text-bg-secondary me-3">6</span>-->
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('index.solicitacoes') }}" class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
+                                <i class="nav-icon bi bi-person-fill"></i>
+                                <p>Lista de Solicitações</p>
                             </a>
                         </li>
                     </ul>
