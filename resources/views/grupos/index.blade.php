@@ -4,20 +4,12 @@
 
 @section('content')
 
-<style>
-    .form-control:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: #1a70c7ff !important;
-    }
-</style>
-
 @session('status')
 <div class="alert alert-success">
     {{ $value }}
 </div>
 @endsession
-<div class="container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
+<div class=" font container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
     <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
         <h5 class="fs-3 fw-bold">Grupos</h5>
         <form method="GET" action="{{ route('index.grupos') }}">
@@ -52,5 +44,5 @@
 <div class="p-3">
     {{ $grupos->links() }}
 </div>
-
+@vite('resources/css/app.css')
 @endsection

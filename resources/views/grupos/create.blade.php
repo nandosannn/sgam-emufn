@@ -2,16 +2,8 @@
 
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
-<style>
-    .form-control:focus, .form-select:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: #1a70c7ff !important;
-    }
-</style>
-
 @section('content')
-    <div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
+    <div class=" font container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
         <div class="fs-4 fw-bold mb-4">Adicionar Grupo</div>
         <form action="{{ route('store.grupos') }}" method="POST">
             @csrf
@@ -69,6 +61,7 @@
             </div>
         </form>
     </div>
+@vite('resources/css/app.css')
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

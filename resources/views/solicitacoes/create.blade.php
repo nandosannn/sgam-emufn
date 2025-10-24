@@ -41,4 +41,5 @@
             </div>
         </form>
     </div>
+@vite('resources/css/app.css')
 @endsection

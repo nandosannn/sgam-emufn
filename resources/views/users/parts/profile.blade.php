@@ -6,11 +6,11 @@
     }
 </style>
 
-<div class="card">
+<div class="font card">
     <form action="{{route('updateprofile.users', $user)}}" method="POST">
         @csrf
         @method('PUT')
-        <div class="card-header">
+        <div class="title card-header">
             Perfil
         </div>
 

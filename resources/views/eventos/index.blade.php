@@ -4,40 +4,12 @@
 
 @section('content')
 
-<style>
-    .form-control:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: #1a70c7ff !important;
-    }
-
-    .table thead th {
-        font-weight: 600;
-        color: #4a4a4a;
-        border-bottom: 2px solid #dee2e6;
-    }
-
-    .table tbody tr:hover {
-        background-color: #f8f9fa;
-        transition: background-color 0.2s ease-in-out;
-    }
-
-    .card {
-        border-radius: 1rem;
-    }
-
-    .badge {
-        font-size: 0.85rem;
-        padding: 0.4em 0.6em;
-    }
-</style>
-
 @session('status')
 <div class="alert alert-success">
     {{ $value }}
 </div>
 @endsession
-<div class="container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
+<div class="font container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
     <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
         <h5 class="fs-3 fw-bold">Eventos Cadastrados</h5>
         <form method="GET" action="{{ route('index.eventos') }}">
@@ -60,7 +32,7 @@
     @if (count($eventos) > 0)
     <div class="card shadow-sm border-0 mt-3">
         <div class="card-header bg-white border-0">
-            <h5 class="fw-bold text-primary m-0 d-flex align-items-center">
+            <h5 class="icone fw-bold text-primary m-0 d-flex align-items-center">
                 <i class="bi bi-calendar-event me-2"></i> Eventos
             </h5>
         </div>
@@ -118,5 +90,5 @@
     </div>
     @endif
 </div>
-
+@vite('resources/css/app.css')
 @endsection

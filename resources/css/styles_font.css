@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Liberation Sans';
+    src: url('/fonts/liberation/LiberationSans-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+.btn-outline-primary {
+    border-color: #164194 !important;
+    color: #164194 !important;
+    font-weight: bold !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0095DB !important;
+    border-color: #0095DB !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.btn-outline-danger {
+    border-color: #A94442 !important;
+    color: #A94442 !important;
+    font-weight: bold !important;
+}
+
+.btn-outline-danger:hover {
+    background-color: #F58784 !important;
+    border-color: #F58784 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #164194 !important;
+}
+
+.btn-primary {
+    background-color: #164194 !important;
+    border: none !important;
+    font-weight: bold !important;
+
+}
+
+.btn-primary:hover {
+    background-color: #0095DB !important;
+    border: none;
+    font-weight: bold !important;
+}
+
+.font {
+    font-family: 'Liberation Sans', Arial, sans-serif !important;
+    font-size: 0.875rem !important;
+    /* ~14px */
+}
+
+.form-label {
+    color: #164194 !important
+}
+
+.title {
+    font-style: italic;
+}
+
+label {
+    font-size: 1rem !important;
+}
+
+
+.table thead th {
+    font-weight: bold;
+    color: #4a4a4a;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody tr{
+    font-weight: 500 !important;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.6em;
+}
+
+.icone {
+    color: #0095DB !important;
+}

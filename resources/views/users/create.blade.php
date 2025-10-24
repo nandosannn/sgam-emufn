@@ -2,21 +2,13 @@
 
 @section('title-aba', 'SGAM | Adicionar Usuário')
 
-<style>
-    .form-control:focus, .form-select:focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border-color: #1a70c7ff !important;
-    }
-</style>
-
 @section('content')
-    <div class="container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
+    <div class=" font container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
         <div class="fs-4 fw-bold mb-4">Adicionar Usuário</div>
         <form action="{{ route('store.users') }}" method="POST">
             @csrf
-            <div class="card mb-3">
-                <div class="card-header fs-5 ">
+            <div class="card border-light mb-3">
+                <div class="title card-header fs-5 ">
                     Dados de Usuário
                 </div>
 
@@ -70,8 +62,8 @@
                 </div>
             </div>
 
-            <div class="card mb-3">
-                <div class="card-header fs-5">
+            <div class="card border-light mb-3">
+                <div class="title card-header fs-5">
                     Perfil
                 </div>
 
@@ -131,6 +123,8 @@
             </div>
         </form>
     </div>
+
+@vite('resources/css/app.css')
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
