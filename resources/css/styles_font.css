@@ -66,14 +66,14 @@
 .btn-primary {
     background-color: #164194 !important;
     border: none !important;
-    font-weight: bold !important;
+    font-weight: bolder !important;
 
 }
 
 .btn-primary:hover {
     background-color: #0095DB !important;
     border: none;
-    font-weight: bold !important;
+    font-weight: bolder !important;
 }
 
 .font {
@@ -92,7 +92,8 @@
 }
 
 label {
-    font-size: 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500;
 }
 
 
@@ -102,7 +103,7 @@ label {
     border-bottom: 2px solid #dee2e6;
 }
 
-.table tbody tr{
+.table tbody tr {
     font-weight: 500 !important;
 }
 
@@ -130,4 +131,22 @@ textarea {
 
 select {
     color: #4E4E4E !important;
+}
+
+.bg-body-secondary {
+    background-color: rgba(17, 50, 114, 1) !important;
+}
+
+.sidebar-brand {
+    border-bottom: 1px solid rgb(14, 42, 97);
+}
+
+.font-logo {
+    font-family: 'Liberation Sans', Arial, sans-serif !important;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+}
+
+.font-sidebar{
+    font-weight: bolder;
 }

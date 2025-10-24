@@ -1,26 +1,5 @@
 <!--begin::Sidebar-->
-
-<style>
-    .bg-body-secondary{
-        background-color: rgba(17, 50, 114, 1) !important;
-    }
-    .sidebar-brand {
-        border-bottom: 1px solid rgb(14, 42, 97);
-    }
-
-    .font {
-        font-family: 'Liberation Sans', Arial, sans-serif !important;
-        font-size: 0.875rem !important; /* ~14px */
-        font-weight: bold !important;
-    }
-
-    .font-logo{
-        font-family: 'Liberation Sans', Arial, sans-serif !important;
-        font-size: 1.4rem !important;
-        font-weight: bold !important;
-    }
-</style>
-<aside class="font app-sidebar bg-body-secondary shadow sidebar-menu" data-bs-theme="dark">
+<aside class="font-sidebar font app-sidebar bg-body-secondary shadow sidebar-menu" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
         <!--begin::Brand Link-->
@@ -177,5 +156,6 @@
         </nav>
     </div>
     <!--end::Sidebar Wrapper-->
+@vite('resources/css/app.css')
 </aside>
 <!--end::Sidebar-->
