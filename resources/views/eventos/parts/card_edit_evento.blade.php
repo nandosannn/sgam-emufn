@@ -1,5 +1,5 @@
 <div class="card border-light mb-3">
-    <div class="card-header fs-5">
+    <div class="title card-header fs-5">
         Dados do Evento
     </div>
 
@@ -71,7 +71,7 @@
 </div>
 
 <div class="card border-light mb-3">
-    <div class="card-header fs-5">
+    <div class="title card-header fs-5">
         Dados do Endereco
     </div>
 

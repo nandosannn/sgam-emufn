@@ -1,9 +1,9 @@
 
-<div class="card">
+<div class="font card">
     <form action="{{ route('update.users', $user) }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="title card-header">
+        <div class="title fs-5 card-header">
             Dados de Usuário
         </div>
 
