@@ -34,5 +34,7 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('eventos/{evento}', [EventoController::class, 'destroy'])->name('destroy.eventos');
 
     Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
+    Route::post('solicitacoes/store', [SolicitacaoController::class, 'store'])->name('store.silicitacoes');
+
 });
 
