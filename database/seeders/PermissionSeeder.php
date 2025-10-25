@@ -14,17 +14,29 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Permissões
-        Permission::create(['name' => 'visualizar usuários']);
-        Permission::create(['name' => 'editar usuários']);
-        Permission::create(['name' => 'gerenciar coordenadores']);
-        Permission::create(['name' => 'ver relatórios']);
+       // Lista de permissões
+        $permissions = [
+            'visualizar usuários',
+            'editar usuários',
+            'excluir usuários',
+            'criar eventos',
+            'editar eventos',
+            'excluir eventos',
+            'ver relatórios', // ← adicionado para o coordenador
+        ];
 
-        // Papéis
-        $admin = Role::create(['name' => 'admin']);
-        $coordenador = Role::create(['name' => 'coordenador']);
+        // Cria as permissões (sem duplicar)
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(
+                ['name' => $permission, 'guard_name' => 'web']
+            );
+        }
 
-        // Atribuir permissões aos papéis
+        // Cria os papéis (sem duplicar)
+        $admin = Role::firstOrCreate(['name' => 'admin']);
+        $coordenador = Role::firstOrCreate(['name' => 'coordenador']);
+
+        // Atribui permissões aos papéis
         $admin->givePermissionTo(Permission::all());
         $coordenador->givePermissionTo(['ver relatórios']);
     }
