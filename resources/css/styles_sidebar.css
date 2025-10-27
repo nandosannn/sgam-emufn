@@ -1,0 +1,40 @@
+/* ===== Correções de alinhamento geral ===== */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-link i {
+    min-width: 22px; /* garante que todos os ícones ocupem o mesmo espaço */
+    text-align: center;
+    font-size: 1rem;
+}
+
+.nav-link p {
+    margin: 0 0 0 8px; /* espaço entre ícone e texto */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-treeview {
+    margin-left: 1.2rem; /* desloca subitens para a direita */
+}
+
+.nav-link.active {
+    background-color: #343a40;
+    border-radius: 6px;
+}
+
+.font-li {
+    margin: 0;
+}
+
+/* Ícones menores dos subitens */
+.nav-treeview .nav-link i {
+    font-size: 0.4rem;
+}

@@ -22,7 +22,7 @@ class PermissionSeeder extends Seeder
             'criar eventos',
             'editar eventos',
             'excluir eventos',
-            'ver relatórios', // ← adicionado para o coordenador
+            'ver relatórios',
         ];
 
         // Cria as permissões (sem duplicar)

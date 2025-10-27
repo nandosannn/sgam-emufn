@@ -150,3 +150,8 @@ select {
 .font-sidebar{
     font-weight: bolder;
 }
+
+.font-li {
+    font-size: 0.84rem !important;
+    font-weight: bold;
+}
