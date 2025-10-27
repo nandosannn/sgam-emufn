@@ -19,25 +19,27 @@
 </li>
 
 <!-- ================== SOLICITAÇÕES ================== -->
-<li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="bi bi-clipboard-check-fill"></i>
+<li class="nav-item {{ Request::is('solicitacoes*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link d-flex align-items-center">
+        <i class="nav-icon bi bi-clipboard-fill"></i>
         <p>
-            Solicitações
+            Solicitações Grupo
             <i class="nav-arrow bi bi-chevron-right"></i>
         </p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('index.users') }}" class="nav-link">
+            <a href="{{ route('index.solicitacoes') }}"
+                class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
-                <p>Solicitações Abertas</p>
+                <p class="font-li">Solicitações Abertas</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="./widgets/info-box.html" class="nav-link">
+            <a href="{{ route('index.solicitacoes') }}"
+                class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
-                <p class="text-break">Acompanhar<br> Solicitações</p>
+                <p class="font-li">Acompanhar <br> Solicitações</p>
             </a>
         </li>
     </ul>
