@@ -155,3 +155,7 @@ select {
     font-size: 0.84rem !important;
     font-weight: bold;
 }
+
+.bg-primary {
+    background-color: #164194 !important;
+}

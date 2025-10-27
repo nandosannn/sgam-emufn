@@ -47,4 +47,8 @@ class SolicitacaoController extends Controller
 
         return view('solicitacoes.index', compact('solicitacoes'));
     }
+
+    public function solicitacoesAbertas(){
+        
+    }
 }
