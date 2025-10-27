@@ -52,6 +52,26 @@
     </ul>
 </li>
 
+<!-- ================== SOLICITAÇÕES ================== -->
+<li class="nav-item {{ Request::is('solicitacoes*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link d-flex align-items-center">
+        <i class="nav-icon bi bi-clipboard-fill"></i>
+        <p>
+            Solicitações
+            <i class="nav-arrow bi bi-chevron-right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('index.solicitacoes') }}"
+                class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
+                <i class="bi bi-circle-fill"></i>
+                <p class="font-li">Solicitações Gerais</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
 <!-- ================== RELATÓRIOS ================== -->
 <li class="nav-item {{ Request::is('relatorios*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link d-flex align-items-center">
