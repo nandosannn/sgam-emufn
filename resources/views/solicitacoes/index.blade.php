@@ -66,9 +66,7 @@
                                 @foreach ($solicitacoes as $solicitacao)
                                     <tr>
                                         <td class="text-wrap text-center">
-                                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modalEvento{{ $solicitacao->evento->id }}">
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </button>
                                         </td>
@@ -78,17 +76,13 @@
                                         <td class="text-wrap text-break">{{ $solicitacao->evento->endereco->logradouro }}
                                         </td>
                                         <td class="text-wrap text-center">
-                                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modalSolicitante{{ $solicitacao->id }}">
+                                            <button type="button" class="btn btn-outline-primary btn-sm">
                                                 Ver detalhes
                                             </button>
                                         </td>
                                         <td class="text-wrap text-center">
                                             @if ($solicitacao->informacoesGrupo)
-                                                <button type="button" class="btn btn-outline-success btn-sm"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalGrupo{{ $solicitacao->id }}">
+                                                <button type="button" class="btn btn-outline-success btn-sm">
                                                     Confirmado: {{ $solicitacao->informacoesGrupo->grupo->nome }}
                                                 </button>
                                             @else
@@ -97,9 +91,7 @@
                                         </td>
                                         <td class="text-center text-wrap">
                                             @if ($solicitacao->transporte)
-                                                <button type="button" class="btn btn-outline-info btn-sm"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalTransporte{{ $solicitacao->id }}">
+                                                <button type="button" class="btn btn-outline-info btn-sm">
                                                     Ver transporte
                                                 </button>
                                             @else
@@ -121,118 +113,6 @@
                                                 {{ $status }}
                                             </span>
                                         </td>
-
-                                        {{-- MODAL EVENTO --}}
-                                        <div class="modal fade" id="modalEvento{{ $solicitacao->evento->id }}"
-                                            tabindex="-1" aria-labelledby="modalEventoLabel{{ $solicitacao->evento->id }}"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title fw-bold"
-                                                            id="modalEvento{{ $solicitacao->evento->id }}">
-                                                            Informações do Evento
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Fechar"></button>
-                                                    </div>
-                                                    <div class="modal-body text-start">
-                                                        <p><strong>Nome:</strong> {{ $solicitacao->evento->nome }}
-                                                        </p>
-                                                        <p class="text-break"><strong>Descrição:</strong>
-                                                            {{ $solicitacao->evento->descricao ?? 'Não informado' }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- MODAL SOLICITANTE --}}
-                                        <div class="modal fade" id="modalSolicitante{{ $solicitacao->id }}" tabindex="-1"
-                                            aria-labelledby="modalSolicitanteLabel{{ $solicitacao->id }}"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title fw-bold"
-                                                            id="modalSolicitanteLabel{{ $solicitacao->id }}">
-                                                            Informações do Solicitante
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Fechar"></button>
-                                                    </div>
-                                                    <div class="modal-body text-start">
-                                                        <p><strong>Nome:</strong> {{ $solicitacao->evento->user->nome }}
-                                                        </p>
-                                                        <p><strong>Email:</strong>
-                                                            {{ $solicitacao->evento->user->email ?? 'Não informado' }}
-                                                        </p>
-                                                        <p><strong>Telefone:</strong>
-                                                            {{ $solicitacao->evento->user->telefone ?? 'Não informado' }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- MODAL GRUPO --}}
-                                        @if ($solicitacao->informacoesGrupo)
-                                            <div class="modal fade" id="modalGrupo{{ $solicitacao->id }}" tabindex="-1"
-                                                aria-labelledby="modalGrupoLabel{{ $solicitacao->id }}"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title fw-bold"
-                                                                id="modalGrupoLabel{{ $solicitacao->id }}">
-                                                                Informações do Grupo
-                                                            </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Fechar"></button>
-                                                        </div>
-                                                        <div class="modal-body text-start">
-                                                            <p><strong>Nome do grupo:</strong>
-                                                                {{ $solicitacao->informacoesGrupo->grupo->nome }}</p>
-                                                            <p><strong>Estilo musical:</strong>
-                                                                {{ $solicitacao->informacoesGrupo->grupo->estilo ?? 'Não informado' }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                        {{-- MODAL TRANSPORTE --}}
-                                        @if ($solicitacao->transporte)
-                                            <div class="modal fade" id="modalTransporte{{ $solicitacao->id }}"
-                                                tabindex="-1"
-                                                aria-labelledby="modalTransporteLabel{{ $solicitacao->id }}"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title fw-bold"
-                                                                id="modalTransporteLabel{{ $solicitacao->id }}">
-                                                                Informações do Transporte
-                                                            </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Fechar"></button>
-                                                        </div>
-                                                        <div class="modal-body text-start">
-                                                            <p><strong>Motorista:</strong>
-                                                                {{ $solicitacao->transporte->motorista->nome ?? 'Não informado' }}
-                                                            </p>
-                                                            <p><strong>Placa:</strong>
-                                                                {{ $solicitacao->transporte->veiculo->placa ?? 'Não informado' }}
-                                                            </p>
-                                                            <p><strong>Capacidade:</strong>
-                                                                {{ $solicitacao->transporte->veiculo->capacidade ?? 'Não informado' }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
