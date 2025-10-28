@@ -48,7 +48,7 @@ class SolicitacaoController extends Controller
         return view('solicitacoes.index', compact('solicitacoes'));
     }
 
-    public function informacoesEvento(Solicitacao $solicitacao){
+    public function informacoesSolicitacao(Solicitacao $solicitacao){
         return view('solicitacoes.informacoes_evento', compact('solicitacao'));
     }
 }

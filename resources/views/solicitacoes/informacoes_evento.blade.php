@@ -10,8 +10,9 @@
 </div>
 @endsession
 <div class="font container-fluid p-5 shadow-sm" style="background-color: #fcfcfcff;">
-    <div class="fs-4 fw-bold mb-4">Informações do Evento</div>
+    <div class="fs-4 fw-bold mb-4">Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}</div>
     @include('solicitacoes.parts.card_evento', ['solicitacao' => $solicitacao])
+    @include('solicitacoes.parts.card_solicitante', ['solicitacao' => $solicitacao])
 </div>
 @vite('resources/css/app.css')
 @endsection

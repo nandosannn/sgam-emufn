@@ -52,11 +52,11 @@
                         <table class="table table-hover align-middle mb-0 p-2">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" class="text-center" style="width: 20%">Informações Evento</th>
-                                    <th scope="col" class="text-center" style="width: 20%">Informações do Solicitante
+                                    <th scope="col" class="text-center" style="width: 20%">Informações Detalhadas</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Solicitante
                                     </th>
-                                    <th scope="col" class="text-center" style="width: 20%">Informações do Grupo</th>
-                                    <th scope="col" class="text-center" style="width: 20%">Informações do Transporte</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Grupo</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Transporte</th>
                                     <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
                                 </tr>
                             </thead>
@@ -64,29 +64,24 @@
                                 @foreach ($solicitacoes as $solicitacao)
                                     <tr>
                                         <td class="text-wrap text-center">
-                                            <a href="{{ route('informacoesevento.solicitacoes', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
+                                            <a href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </a>
                                         </td>
                                         <td class="text-wrap text-center">
-                                            <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-primary btn-sm">
-                                                Ver detalhes
-                                            </a>
+                                            <span class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
+
                                         </td>
                                         <td class="text-wrap text-center">
                                             @if ($solicitacao->informacoesGrupo)
-                                                <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-success btn-sm">
-                                                    Confirmado: {{ $solicitacao->informacoesGrupo->grupo->nome }}
-                                                </a>
+                                                <span class="text-black">Confirmado: {{ $solicitacao->informacoesGrupo->grupo->nome }}</span>
                                             @else
                                                 <span class="text-muted">Nenhum grupo confirmado</span>
                                             @endif
                                         </td>
                                         <td class="text-center text-wrap">
                                             @if ($solicitacao->transporte)
-                                                <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-info btn-sm">
-                                                    Ver transporte
-                                                </a>
+                                                <span class="text-black">Transporte Confirmado</span>
                                             @else
                                                 <span class="text-muted">Nenhum transporte confirmado</span>
                                             @endif

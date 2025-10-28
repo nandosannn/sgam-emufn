@@ -1,6 +1,6 @@
 <div class="card border-light mb-3">
     <div class="title card-header fs-5">
-        Dados do Evento
+        Informações do Evento
     </div>
 
     <div class="card-body">

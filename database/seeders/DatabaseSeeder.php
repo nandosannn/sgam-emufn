@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
 
         // 3. Criar usuário admin e atribuir role
         $adminUser = User::create([
-            'nome' => 'Adm',
-            'sobrenome' => 'Sgam',
+            'nome' => 'Secretaria',
+            'sobrenome' => 'Extensão',
             'cpf' => 'admin',
             'password' => Hash::make('sgam!2025'),
             'ativo' => true,
