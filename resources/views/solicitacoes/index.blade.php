@@ -52,48 +52,41 @@
                         <table class="table table-hover align-middle mb-0 p-2">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" class="text-center" style="width: 15%">Código</th>
-                                    <th scope="col" style="width: 10%">Data</th>
-                                    <th scope="col" style="width: 15%">Endereço</th>
-                                    <th scope="col" class="text-center" style="width: 15%">Informações do Solicitante
+                                    <th scope="col" class="text-center" style="width: 20%">Informações Evento</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Informações do Solicitante
                                     </th>
-                                    <th scope="col" class="text-center" style="width: 15%">Informações do Grupo</th>
-                                    <th scope="col" class="text-center" style="width: 15%">Informações do Transporte</th>
-                                    <th scope="col" class="text-center" style="width: 15%">Status Solicitação</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Informações do Grupo</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Informações do Transporte</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($solicitacoes as $solicitacao)
                                     <tr>
                                         <td class="text-wrap text-center">
-                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                            <a href="{{ route('informacoesevento.solicitacoes', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
-                                            </button>
-                                        </td>
-                                        <td class="text-wrap">
-                                            {{ \Carbon\Carbon::parse($solicitacao->evento->data)->format('d/m/Y H:i') }}
-                                        </td>
-                                        <td class="text-wrap text-break">{{ $solicitacao->evento->endereco->logradouro }}
+                                            </a>
                                         </td>
                                         <td class="text-wrap text-center">
-                                            <button type="button" class="btn btn-outline-primary btn-sm">
+                                            <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-primary btn-sm">
                                                 Ver detalhes
-                                            </button>
+                                            </a>
                                         </td>
                                         <td class="text-wrap text-center">
                                             @if ($solicitacao->informacoesGrupo)
-                                                <button type="button" class="btn btn-outline-success btn-sm">
+                                                <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-success btn-sm">
                                                     Confirmado: {{ $solicitacao->informacoesGrupo->grupo->nome }}
-                                                </button>
+                                                </a>
                                             @else
                                                 <span class="text-muted">Nenhum grupo confirmado</span>
                                             @endif
                                         </td>
                                         <td class="text-center text-wrap">
                                             @if ($solicitacao->transporte)
-                                                <button type="button" class="btn btn-outline-info btn-sm">
+                                                <a href="{{ route('index.solicitacoes') }}" class="btn btn-outline-info btn-sm">
                                                     Ver transporte
-                                                </button>
+                                                </a>
                                             @else
                                                 <span class="text-muted">Nenhum transporte confirmado</span>
                                             @endif
