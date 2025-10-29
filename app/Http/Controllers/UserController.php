@@ -75,10 +75,19 @@ class UserController extends Controller
                 'ocupacao' => $request->ocupacao,
                 'telefone' => $request->telefone,
                 'email' => $request->email,
-                'tipo_perfil' => $request->tipo_perfil,
+                'tipoPerfil' => $request->tipo_perfil,
                 'user_id' => $user->id
             ]);
+
             if ($perfil) {
+
+                if($perfil->tipoPerfil == 'coordenador'){
+                    CoordenadorGrupo::Create([
+                        'user_id' => $user->id,
+                        'ativo' => true
+                    ]);
+                }
+
                 return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
             }
         }
@@ -150,13 +159,8 @@ class UserController extends Controller
 
             if ($grupos->isNotEmpty() && $secretaria) {
 
-                CoordenadorGrupo::updateOrCreate(
-                    ['user_id' => $secretaria->id],
-                    ['ativo' => true]
-                );
-
                 GrupoMusical::where('coordenador_id', $user->id)
-                    ->update(['coordenador_id' => $secretaria->id]);
+                    ->update(['coordenador_id' => $secretaria->coordenador->id]);
             }
         }
         return redirect()->route('index.users')->with('status', 'Usuário atualizado com sucesso');

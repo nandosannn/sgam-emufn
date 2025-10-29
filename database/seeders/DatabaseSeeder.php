@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CoordenadorGrupo;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
@@ -22,12 +23,17 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 3. Criar usuário admin e atribuir role
-        $adminUser = User::create([
+        $adminUser = User::Create([
             'nome' => 'Secretaria',
             'sobrenome' => 'Extensão',
             'cpf' => 'admin',
             'password' => Hash::make('sgam!2025'),
             'ativo' => true,
+        ]);
+
+        CoordenadorGrupo::Create([
+            'user_id' => $adminUser->id,
+            'ativo' => true
         ]);
 
         // Atribuir role de admin ao usuário
