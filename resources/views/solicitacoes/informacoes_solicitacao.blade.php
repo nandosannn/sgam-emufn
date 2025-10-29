@@ -17,7 +17,7 @@
         @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
     @endif
     @if($solicitacao->transporte)
-        @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
+        @include('solicitacoes.parts.card_transporte', ['solicitacao' => $solicitacao])
     @endif
 </div>
 @vite('resources/css/app.css')

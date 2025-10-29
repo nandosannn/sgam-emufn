@@ -11,7 +11,8 @@ class Motorista extends Model
 
     protected $fillable = [
         'cnh',
-        'nome_motorista'
+        'nome_motorista',
+        'telefone'
     ];
 
     public function veiculo(){

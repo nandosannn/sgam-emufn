@@ -23,4 +23,8 @@ class InformacoesGrupo extends Model
     public function solicitacao(){
         return $this->belongsTo(Solicitacao::class, 'solicitacao_id', 'id');
     }
+
+    public function endereco(){
+        return $this->belongsTo(Endereco::class, 'endereco_musicos_id', 'id');
+    }
 }

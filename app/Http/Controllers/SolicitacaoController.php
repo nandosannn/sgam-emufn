@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use App\Models\Solicitacao;
+use App\Models\TransporteVeiculos;
 use Illuminate\Http\Request;
 
 class SolicitacaoController extends Controller
