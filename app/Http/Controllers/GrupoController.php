@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CoordenadorGrupo;
 use App\Models\GrupoMusical;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GrupoController extends Controller
 {
@@ -12,21 +14,23 @@ class GrupoController extends Controller
     {
         $query = GrupoMusical::with('coordenador');
 
-        if($request->filled('nome')){
-            $query->where('nome', 'like', '%'.$request->nome.'%');
+        if ($request->filled('nome')) {
+            $query->where('nome', 'like', '%' . $request->nome . '%');
         }
 
         $grupos = $query->paginate(8);
         return view('grupos.index', compact('grupos'));
     }
 
-    public function create(){
+    public function create()
+    {
         $coordenadores = CoordenadorGrupo::with('user')->where('ativo', true)->get();
         return view('grupos.create', compact('coordenadores'));
     }
 
     public function store(Request $request)
     {
+
         $request->validate([
             'nome' => 'required',
             'data' => 'required|date',
@@ -38,12 +42,11 @@ class GrupoController extends Controller
             'coordenador_id' => $request->coordenador
         ]);
 
-        if($grupo){
+        if ($grupo) {
             return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
         }
 
         return redirect()->route('create.grupos')->with('status', 'Erro ao cadastrar usuário!');
-
     }
 
     public function edit(GrupoMusical $grupo)
@@ -53,7 +56,8 @@ class GrupoController extends Controller
         return view('grupos.edit', compact('grupo', 'coordenadores'));
     }
 
-    public function update(Request $request, GrupoMusical $grupo){
+    public function update(Request $request, GrupoMusical $grupo)
+    {
 
         $request->validate([
             'nome' => 'required|string|max:255',
@@ -70,9 +74,19 @@ class GrupoController extends Controller
         return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
     }
 
-    public function destroy(GrupoMusical $grupo){
+    public function destroy(GrupoMusical $grupo)
+    {
         $grupo->delete();
-
         return redirect()->route('index.grupos')->with('status', 'Grupo deletado com sucesso');
+    }
+
+    public function gruposCoordenados(){
+        $usuario = Auth::user();
+        $grupos = collect();
+
+        if ($usuario && $usuario->perfil && $usuario->perfil->tipoPerfil == 'coordenador') {
+            $grupos = GrupoMusical::where('coordenador_id', $usuario->id)->get();
+        }
+        return $grupos;
     }
 }

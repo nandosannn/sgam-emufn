@@ -32,5 +32,6 @@ class DatabaseSeeder extends Seeder
 
         // Atribuir role de admin ao usuário
         $adminUser->assignRole('admin');
+        $adminUser->assignRole('coordenador');
     }
 }

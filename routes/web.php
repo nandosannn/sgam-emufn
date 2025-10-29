@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
     Route::delete('grupos/{grupo}', [GrupoController::class, 'destroy'])->name('destroy.grupos');
+    Route::get('grupos/coordenados', [GrupoController::class, 'gruposCoordenados'])->name('coordenados.grupos');
 
     Route::get('eventos', [EventoController::class, 'index'])->name('index.eventos');
     Route::get('eventos/create', [EventoController::class, 'create'])->name('create.eventos');

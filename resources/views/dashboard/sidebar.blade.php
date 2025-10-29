@@ -14,8 +14,10 @@
                 <li class="nav-header">ADMINISTRAÇÃO</li>
                 @include('dashboard.partials.item-admin')
                 @endrole
+                @role('coordenador')
                 <li class="nav-header">COORDENAÇÃO</li>
                 @include('dashboard.partials.item-coord')
+                @endrole
                 <li class="nav-header">SOLICITAÇÕES</li>
                 @include('dashboard.partials.item-solicitacoes')
         </nav>

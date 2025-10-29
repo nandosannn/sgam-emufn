@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\CoordenadorGrupo;
+use App\Models\GrupoMusical;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\UserPerfil;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Spatie\Permission\Commands\AssignRole;
 
 class UserController extends Controller
 {
@@ -136,10 +137,26 @@ class UserController extends Controller
                 $coordenador->ativo = true;
                 $coordenador->save();
             }
+            $user->assignRole('coordenador');
         } else {
             if ($coordenador) {
                 $coordenador->ativo = false;
                 $coordenador->save();
+            }
+            $user->removeRole('coordenador');
+
+            $grupos = GrupoMusical::where('coordenador_id', $user->id)->get();
+            $secretaria = User::where('cpf', 'admin')->first();
+
+            if ($grupos->isNotEmpty() && $secretaria) {
+
+                CoordenadorGrupo::updateOrCreate(
+                    ['user_id' => $secretaria->id],
+                    ['ativo' => true]
+                );
+
+                GrupoMusical::where('coordenador_id', $user->id)
+                    ->update(['coordenador_id' => $secretaria->id]);
             }
         }
         return redirect()->route('index.users')->with('status', 'Usuário atualizado com sucesso');
