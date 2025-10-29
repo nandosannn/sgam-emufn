@@ -84,7 +84,7 @@ class GrupoController extends Controller
         $usuario = Auth::user();
         $grupos = collect();
         if($usuario){
-            $usuarioCord = CoordenadorGrupo::where('user_id', $usuario->id);
+            $usuarioCord = CoordenadorGrupo::where('user_id', $usuario->id)->first();
             if ($usuarioCord) {
                 $grupos = GrupoMusical::where('coordenador_id', $usuarioCord->id)->get();
             }
