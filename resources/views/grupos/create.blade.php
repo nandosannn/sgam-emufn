@@ -42,8 +42,8 @@
                             id="coordenador">
                             <option value="">Selecione</option>
                             @foreach ($coordenadores as $coordenador)
-                                <option value="{{ $coordenador->user->id }}"
-                                    {{ old('coordenador') == $coordenador->user->id ? 'selected' : '' }}>
+                                <option value="{{ $coordenador?->id }}"
+                                    {{ old('coordenador') == $coordenador->id ? 'selected' : '' }}>
                                     {{ $coordenador?->user?->nome . ' ' . $coordenador?->user?->sobrenome }}
                                 </option>
                             @endforeach
