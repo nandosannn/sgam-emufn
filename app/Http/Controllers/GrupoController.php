@@ -83,9 +83,11 @@ class GrupoController extends Controller
     public function gruposCoordenados(){
         $usuario = Auth::user();
         $grupos = collect();
-
-        if ($usuario && $usuario->perfil && $usuario->perfil->tipoPerfil == 'coordenador') {
-            $grupos = GrupoMusical::where('coordenador_id', $usuario->id)->get();
+        if($usuario){
+            $usuarioCord = CoordenadorGrupo::where('user_id', $usuario->id);
+            if ($usuarioCord) {
+                $grupos = GrupoMusical::where('coordenador_id', $usuarioCord->id)->get();
+            }
         }
         return $grupos;
     }
