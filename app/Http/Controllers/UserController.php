@@ -80,13 +80,14 @@ class UserController extends Controller
             ]);
 
             if ($perfil) {
-
-                if($perfil->tipoPerfil == 'coordenador'){
+                if ($perfil->tipoPerfil == 'coordenador') {
                     CoordenadorGrupo::Create([
                         'user_id' => $user->id,
                         'ativo' => true
                     ]);
                 }
+
+                $user->assignRole('coordenador');
 
                 return redirect()->route('index.users')->with(['status' => 'Usuário cadastrado com sucesso']);
             }
@@ -154,13 +155,18 @@ class UserController extends Controller
             }
             $user->removeRole('coordenador');
 
-            $grupos = GrupoMusical::where('coordenador_id', $user->id)->get();
+            $grupos = GrupoMusical::where('coordenador_id', $coordenador->id)->get();
             $secretaria = User::where('cpf', 'admin')->first();
+
 
             if ($grupos->isNotEmpty() && $secretaria) {
 
-                GrupoMusical::where('coordenador_id', $user->id)
-                    ->update(['coordenador_id' => $secretaria->coordenador->id]);
+                $secretariaCoord = CoordenadorGrupo::where('user_id', $secretaria->id)->first();
+                if($secretariaCoord){
+                    GrupoMusical::where('coordenador_id', $coordenador->id)
+                        ->update(['coordenador_id' => $secretariaCoord->id]);
+                }
+
             }
         }
         return redirect()->route('index.users')->with('status', 'Usuário atualizado com sucesso');
@@ -168,6 +174,19 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $coordenador = CoordenadorGrupo::where('user_id', $user->id)->first();
+
+        if($coordenador){
+            $grupos = GrupoMusical::where('coordenador_id', $coordenador->id)->get();
+            $secretaria = User::where('cpf', 'admin')->first();
+            if ($grupos->isNotEmpty() && $secretaria) {
+                $secretariaCoord = CoordenadorGrupo::where('user_id', $secretaria->id)->first();
+                if ($secretariaCoord) {
+                    GrupoMusical::where('coordenador_id', $coordenador->id)
+                        ->update(['coordenador_id' => $secretariaCoord->id]);
+                }
+            }
+        }
         $user->delete();
 
         return redirect()->route('index.users')->with('status', 'Usuário deletado com sucesso');
