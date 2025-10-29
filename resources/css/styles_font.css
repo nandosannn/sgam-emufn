@@ -159,3 +159,8 @@ select {
 .bg-primary {
     background-color: #164194 !important;
 }
+
+.informacoes-input{
+    background-color: rgb(247, 247, 247) !important;
+    font-style: italic !important;
+}

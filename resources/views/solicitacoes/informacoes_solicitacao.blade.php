@@ -13,6 +13,12 @@
     <div class="fs-4 fw-bold mb-4">Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}</div>
     @include('solicitacoes.parts.card_evento', ['solicitacao' => $solicitacao])
     @include('solicitacoes.parts.card_solicitante', ['solicitacao' => $solicitacao])
+    @if($solicitacao->informacoesGrupo)
+        @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
+    @endif
+    @if($solicitacao->transporte)
+        @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
+    @endif
 </div>
 @vite('resources/css/app.css')
 @endsection
