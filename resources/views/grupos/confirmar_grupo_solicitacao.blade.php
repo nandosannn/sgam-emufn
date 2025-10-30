@@ -4,8 +4,13 @@
 
 @section('content')
 
-@session('error')
-<div class="alert alert-danger">
+@if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+@session('status')
+<div class="alert alert-success">
     {{ $value }}
 </div>
 @endsession

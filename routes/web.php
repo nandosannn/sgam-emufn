@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grupcoordenador', [GrupoController::class, 'gruposCoordenados'])->name('coordenados.grupos');
     Route::get('grupcoordenador/confirmar', [GrupoController::class, 'gruposConfirmar'])->name('confirmar.grupos');
     Route::get('solicicoordenador/informacoes/{solicitacao}', [GrupoController::class, 'gruposInformacoes'])->name('informacoes.grupos');
-    Route::put('solicicoordenador/confirmacao', [GrupoController::class, 'gruposConfirmar'])->name('informacoesconfirmacao.grupos');
+    Route::post('solicicoordenador/confirmacao', [GrupoController::class, 'gruposConfirmar'])->name('informacoesconfirmacao.grupos');
     Route::post('grupos/store', [GrupoController::class, 'store'])->name('store.grupos');
     Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');

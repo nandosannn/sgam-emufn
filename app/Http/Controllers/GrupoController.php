@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\CoordenadorGrupo;
+use App\Models\Endereco;
+use App\Models\Evento;
 use App\Models\GrupoMusical;
+use App\Models\InformacoesGrupo;
 use App\Models\Solicitacao;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -119,16 +122,66 @@ class GrupoController extends Controller
         return view('grupos.coordenados', compact('grupos'));
     }
 
-    public function gruposInformacoes(Solicitacao $solicitacao){
+    public function gruposInformacoes(Solicitacao $solicitacao)
+    {
 
         $user = Auth::user();
 
         $userCoord = CoordenadorGrupo::where('user_id', $user->id)->first();
         $grupos = collect();
-        if($userCoord){
+        if ($userCoord) {
             $grupos = GrupoMusical::where('coordenador_id', $userCoord->id)->get();
         }
 
         return view('grupos.confirmar_grupo_solicitacao', compact('solicitacao', 'grupos'));
+    }
+
+    public function gruposConfirmar(Request $request)
+    {
+        $request->validate([
+            'solicitacao_id' => [
+                'required',
+                'integer',
+                'exists:solicitacao,id',
+            ],
+            'informacoes_musicos' => 'required|string|max:1000',
+            'informacoes_instrumentos' => 'required|string|max:1000',
+            'grupo_musical_id' => [
+                'required',
+                'integer',
+                'exists:grupo_musical,id',
+            ],
+            'logradouro' => 'required|string|max:255',
+            'numero' => 'required|string|max:20',
+            'bairro' => 'required|string|max:100',
+            'cidade' => 'required|string|max:100',
+            'estado' => 'required|string|max:50',
+        ]);
+
+        $evento = Endereco::create([
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+        ]);
+
+        if ($evento) {
+            $grupoConfirmado = InformacoesGrupo::create([
+                'grupo_musical_id' => $request->grupo_musical_id,
+                'solicitacao_id' => $request->solicitacao_id,
+                'endereco_musicos_id' => $evento->id,
+                'informacoes_musicos' => $request->informacoes_musicos,
+                'informacoes_instrumentos' => $request->informacoes_instrumentos,
+            ]);
+
+            if($grupoConfirmado){
+                $solicitacao = Solicitacao::find($request->solicitacao_id);
+                $solicitacao->status = 'Grupo confirmado';
+                $solicitacao->save();
+                return redirect()->route('abertas.solicitacoes')->with('status', 'Grupo confirmado com sucesso!');
+            }
+        }
+        return redirect()->route('abertas.solicitacoes')->with('error', 'Grupo não foi confirmado!');
     }
 }
