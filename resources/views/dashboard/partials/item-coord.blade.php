@@ -9,8 +9,8 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('create.grupos') }}"
-                class="nav-link {{ Request::routeIs('create.grupos') ? 'active' : '' }}">
+            <a href="{{ route('coordenados.grupos') }}"
+                class="nav-link {{ Request::routeIs('coordenados.grupos') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
                 <p class="font-li">Grupos Coordenados</p>
             </a>

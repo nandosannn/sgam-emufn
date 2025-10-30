@@ -30,6 +30,7 @@
                      @enderror
                  </div>
              </div>
+             @role('admin')
              <div class="mb-3">
                  <label for="coordenador" class="form-label">Coordenador</label>
                  <select class="form-control @error('coordenador') is-invalid @enderror" name="coordenador"
@@ -48,6 +49,7 @@
                      </div>
                  @enderror
              </div>
+             @endrole
          </div>
      </div>
      <div class="card-footer text-end">

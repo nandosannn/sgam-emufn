@@ -21,11 +21,12 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('grupos', [GrupoController::class, 'index'])->name('index.grupos');
     Route::get('grupos/create', [GrupoController::class, 'create'])->name('create.grupos');
+    Route::get('grupos/coordenados', [GrupoController::class, 'gruposCoordenados'])->name('coordenados.grupos');
     Route::post('grupos/store', [GrupoController::class, 'store'])->name('store.grupos');
     Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
     Route::delete('grupos/{grupo}', [GrupoController::class, 'destroy'])->name('destroy.grupos');
-    Route::get('grupos/coordenados', [GrupoController::class, 'gruposCoordenados'])->name('coordenados.grupos');
+
 
     Route::get('eventos', [EventoController::class, 'index'])->name('index.eventos');
     Route::get('eventos/create', [EventoController::class, 'create'])->name('create.eventos');

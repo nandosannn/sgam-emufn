@@ -7,6 +7,7 @@ use App\Models\GrupoMusical;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class GrupoController extends Controller
 {
@@ -58,20 +59,33 @@ class GrupoController extends Controller
 
     public function update(Request $request, GrupoMusical $grupo)
     {
+        $user = Auth::user();
+        /** @var \App\Models\User|\Spatie\Permission\Traits\HasRoles $user */
+        if ($user->hasRole('admin')) {
+            $request->validate([
+                'nome' => 'required|string|max:255',
+                'data' => 'required|date',
+                'coordenador' => 'required|exists:coordenador_grupo,id',
+            ]);
+
+            $grupo->update([
+                'nome' => $request->nome,
+                'dataFundacao' => $request->data,
+                'coordenador_id' => $request->coordenador,
+            ]);
+            return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
+        }
 
         $request->validate([
             'nome' => 'required|string|max:255',
             'data' => 'required|date',
-            'coordenador' => 'required|exists:coordenador_grupo,id',
         ]);
 
         $grupo->update([
             'nome' => $request->nome,
             'dataFundacao' => $request->data,
-            'coordenador_id' => $request->coordenador,
         ]);
-
-        return redirect()->route('index.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
+        return redirect()->route('coordenados.grupos')->with(['status' => 'Usuário cadastrado com sucesso']);
     }
 
     public function destroy(GrupoMusical $grupo)
@@ -80,15 +94,29 @@ class GrupoController extends Controller
         return redirect()->route('index.grupos')->with('status', 'Grupo deletado com sucesso');
     }
 
-    public function gruposCoordenados(){
+    public function gruposCoordenados(Request $request)
+    {
         $usuario = Auth::user();
         $grupos = collect();
-        if($usuario){
+
+        // Começa com uma query "vazia"
+        $query = GrupoMusical::query();
+
+        if ($usuario) {
             $usuarioCord = CoordenadorGrupo::where('user_id', $usuario->id)->first();
             if ($usuarioCord) {
-                $grupos = GrupoMusical::where('coordenador_id', $usuarioCord->id)->get();
+                $query = GrupoMusical::where('coordenador_id', $usuarioCord->id);
+            } else {
+                $query = GrupoMusical::whereRaw('1 = 0');
             }
         }
-        return $grupos;
+
+        if ($request->filled('nome')) {
+            $query->where('nome', 'like', '%' . $request->nome . '%');
+        }
+
+        $grupos = $query->paginate(8);
+
+        return view('grupos.coordenados', compact('grupos'));
     }
 }
