@@ -177,7 +177,7 @@ class GrupoController extends Controller
 
             if($grupoConfirmado){
                 $solicitacao = Solicitacao::find($request->solicitacao_id);
-                $solicitacao->status = 'Grupo confirmado';
+                $solicitacao->status = 'Aguardando confirmação do transporte';
                 $solicitacao->save();
                 return redirect()->route('abertas.solicitacoes')->with('status', 'Grupo confirmado com sucesso!');
             }

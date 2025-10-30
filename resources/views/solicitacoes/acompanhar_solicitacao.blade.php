@@ -45,7 +45,7 @@
             <div class="card shadow-sm border-0 mt-3">
                 <div class="card-header bg-white border-0">
                     <h5 class="icone fw-bold text-primary m-0 d-flex align-items-center">
-                        <i class="bi bi-calendar-event me-2"></i> Solicitações
+                        <i class="bi bi-calendar-event me-2"></i>Solicitações
                     </h5>
                 </div>
 
@@ -55,11 +55,11 @@
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col" class="text-center" style="width: 20%">Informações Detalhadas</th>
-                                    <th scope="col" class="text-center" style="width: 20%">Solicitante
                                     </th>
                                     <th scope="col" class="text-center" style="width: 20%">Grupo</th>
                                     <th scope="col" class="text-center" style="width: 20%">Transporte</th>
                                     <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
+                                    <th scope="col" class="text-center" style="width: 20%">Ação
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,11 +70,6 @@
                                                 class="btn btn-outline-primary btn-sm">
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </a>
-                                        </td>
-                                        <td class="text-wrap text-center">
-                                            <span
-                                                class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
-
                                         </td>
                                         <td class="text-wrap text-center">
                                             @if ($solicitacao->informacoesGrupo)
@@ -106,6 +101,13 @@
                                             <span class="badge rounded-pill px-3 py-2 {{ $classeBadge }}">
                                                 {{ $status }}
                                             </span>
+                                        </td>
+
+                                        <td class="text-wrap text-center">
+                                            <a title="cancelar" href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button"
+                                                class="btn btn-outline-danger btn-sm">
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

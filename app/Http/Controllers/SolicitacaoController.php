@@ -6,6 +6,7 @@ use App\Models\Evento;
 use App\Models\Solicitacao;
 use App\Models\TransporteVeiculos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitacaoController extends Controller
 {
@@ -62,5 +63,19 @@ class SolicitacaoController extends Controller
 
         $solicitacoes = $query->paginate(8);
         return view('solicitacoes.abertas', compact('solicitacoes'));
+    }
+
+    public function solicitacoesAcompanhar(Request $request){
+        $q = Solicitacao::whereHas('evento.user', function ($query) {
+            $query->where('id', Auth::id());
+        });
+
+        if($request->filled('nstatus_filtro')){
+            $q->where('status', 'like', '%' . $request->status_filtro . '%');
+        }
+
+        $solicitacoes = $q->paginate(8);
+
+        return view('solicitacoes.acompanhar_solicitacao', compact('solicitacoes'));
     }
 }
