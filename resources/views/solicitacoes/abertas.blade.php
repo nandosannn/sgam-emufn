@@ -73,11 +73,9 @@
 
                             </td>
                             <td class="text-wrap text-center">
-                                @if ($solicitacao->informacoesGrupo)
-                                <span class="text-black">Confirmado: {{ $solicitacao->informacoesGrupo->grupo->nome }}</span>
-                                @else
-                                <span class="text-muted">Nenhum grupo confirmado</span>
-                                @endif
+                                <a href="{{ route('informacoes.grupos', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
+                                    Confirmar Grupo
+                                </a>
                             </td>
                             <td class="text-center text-wrap">
                                 @if ($solicitacao->transporte)

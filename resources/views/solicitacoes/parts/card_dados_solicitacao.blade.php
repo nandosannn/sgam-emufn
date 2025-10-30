@@ -95,7 +95,7 @@
             <input type="hidden" name="status" class="form-control @error('status') is-invalid @enderror"
                 id="status" value="Aguadando disponibilidade de grupo">
             <input readonly type="text" name="" class="form-control" id=""
-                value="Aguadando disponibilidade de grupo" style="background-color: rgb(247, 247, 247); font-style: italic;">
+                value="Aguardando disponibilidade de grupo" style="background-color: rgb(247, 247, 247); font-style: italic;">
             @error('status')
             <div class="invalid-feedback">
                 {{ $message }}

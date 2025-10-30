@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CoordenadorGrupo;
 use App\Models\GrupoMusical;
+use App\Models\Solicitacao;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -98,8 +99,6 @@ class GrupoController extends Controller
     {
         $usuario = Auth::user();
         $grupos = collect();
-
-        // Começa com uma query "vazia"
         $query = GrupoMusical::query();
 
         if ($usuario) {
@@ -118,5 +117,18 @@ class GrupoController extends Controller
         $grupos = $query->paginate(8);
 
         return view('grupos.coordenados', compact('grupos'));
+    }
+
+    public function gruposInformacoes(Solicitacao $solicitacao){
+
+        $user = Auth::user();
+
+        $userCoord = CoordenadorGrupo::where('user_id', $user->id)->first();
+        $grupos = collect();
+        if($userCoord){
+            $grupos = GrupoMusical::where('coordenador_id', $userCoord->id)->get();
+        }
+
+        return view('grupos.confirmar_grupo_solicitacao', compact('solicitacao', 'grupos'));
     }
 }

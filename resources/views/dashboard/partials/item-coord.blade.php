@@ -1,5 +1,5 @@
 <!-- ================== GRUPOS MUSICAIS ================== -->
-<li class="nav-item {{ Request::is('grupos*') ? 'menu-open' : '' }}">
+<li class="nav-item {{ Request::is('grupcoordenador*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link d-flex align-items-center">
         <i class="bi bi-music-note-beamed"></i>
         <p>
@@ -19,7 +19,7 @@
 </li>
 
 <!-- ================== SOLICITAÇÕES ================== -->
-<li class="nav-item {{ Request::is('solicitacoes*') ? 'menu-open' : '' }}">
+<li class="nav-item {{ Request::is('solicicoordenador*') ? 'menu-open' : '' }}">
     <a href="#" class="nav-link d-flex align-items-center">
         <i class="nav-icon bi bi-clipboard-fill"></i>
         <p>
@@ -29,8 +29,8 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{ route('index.solicitacoes') }}"
-                class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
+            <a href="{{ route('abertas.solicitacoes') }}"
+                class="nav-link {{ Request::routeIs('abertas.solicitacoes') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
                 <p class="font-li">Solicitações Abertas</p>
             </a>

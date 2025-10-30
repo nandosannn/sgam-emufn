@@ -52,4 +52,15 @@ class SolicitacaoController extends Controller
     public function informacoesSolicitacao(Solicitacao $solicitacao){
         return view('solicitacoes.informacoes_solicitacao', compact('solicitacao'));
     }
+
+    public function solicitacoesAbertas(Request $request){
+        $query = Solicitacao::where('status', 'Aguardando disponibilidade de grupo');
+
+        if($request->filled('nome')){
+            $query->where('nome', 'like', '%' . $request->nome . '%');
+        }
+
+        $solicitacoes = $query->paginate(8);
+        return view('solicitacoes.abertas', compact('solicitacoes'));
+    }
 }
