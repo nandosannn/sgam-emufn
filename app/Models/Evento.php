@@ -24,4 +24,9 @@ class Evento extends Model
     public function endereco(){
         return $this->belongsTo(Endereco::class, 'endereco_id', 'id');
     }
+
+    public function solicitacoes()
+    {
+        return $this->hasMany(Solicitacao::class, 'evento_id', 'id');
+    }
 }

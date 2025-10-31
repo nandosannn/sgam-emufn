@@ -110,7 +110,7 @@
                                             </span>
                                         </td>
                                         <td class="text-wrap text-center">
-                                            <a title="cancelar" href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button"
+                                            <a title="cancelar grupo" href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button"
                                                 class="btn btn-outline-danger btn-sm">
                                                 <i class="bi bi-x-circle-fill"></i>
                                             </a>

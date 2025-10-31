@@ -12,7 +12,8 @@ class EventoController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Evento::with('user', 'endereco');
+         $query = Evento::with('user', 'endereco')
+        ->whereDoesntHave('solicitacoes');
 
         if ($request->filled('nome')) {
             $query->where('nome', 'like', '%' . $request->nome . '%');
