@@ -88,7 +88,8 @@
                                         </td>
                                         <td class="text-center text-wrap">
                                             @if ($solicitacao->transporte)
-                                                <span class="text-black">Transporte Confirmado</span>
+                                                 <span
+                                                    class="bg-success border-success badge rounded-pill px-3 py-2 text-white">Confirmado</span>
                                             @else
                                                 <span class="text-muted">Nenhum transporte confirmado</span>
                                             @endif

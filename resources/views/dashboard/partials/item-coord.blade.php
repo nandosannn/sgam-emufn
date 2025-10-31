@@ -39,7 +39,7 @@
             <a href="{{ route('acompanharcoord.solicitacoes') }}"
                 class="nav-link {{ Request::routeIs('acompanharcoord.solicitacoes') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
-                <p class="font-li">Acompanhar <br> Solicitações</p>
+                <p class="font-li">Acompanhar <br> Solicitações do grupo</p>
             </a>
         </li>
     </ul>
