@@ -39,6 +39,9 @@ class SolicitacaoController extends Controller
     }
 
     public function index(Request $request){
+
+        ($request->all());
+
         $query = Solicitacao::with('informacoesGrupo', 'evento', 'transporte');
 
         if($request->filled('status_filtro')){

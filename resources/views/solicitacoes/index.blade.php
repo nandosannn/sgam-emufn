@@ -21,7 +21,7 @@
                                 {{ request('status_filtro') == 'Aguadando disponibilidade de grupo' ? 'selected' : '' }}>
                                 Aguadando disponibilidade de grupo
                             </option>
-                            <option value="Aprovada"
+                            <option value="Aguardando confirmação do transporte"
                                 {{ request('status_filtro') == 'Aguardando confirmação do transporte' ? 'selected' : '' }}>
                                 Aguardando confirmação do transporte
                             </option>
