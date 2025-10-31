@@ -12,7 +12,7 @@
     <div class="font container-fluid p-5 shadow-sm" style=" background-color: #fcfcfcff;">
         <div class="d-flex flex-column flex-md-row justify-content-between p-0 mb-5 gap-2">
             <h5 class="fs-3 fw-bold">Lista de Solicitações</h5>
-            <form method="GET" action="{{ route('solicitanteabertas.solicitacoes') }}">
+            <form method="GET" action="{{ route('acompanharcoord.solicitacoes') }}">
                 <div class="row g-3">
                     <div class="col-md-7">
                         <select class="form-select" id="status_filtro" name="status_filtro">
@@ -45,7 +45,7 @@
             <div class="card shadow-sm border-0 mt-3">
                 <div class="card-header bg-white border-0">
                     <h5 class="icone fw-bold text-primary m-0 d-flex align-items-center">
-                        <i class="bi bi-calendar-event me-2"></i>Solicitações
+                        <i class="bi bi-calendar-event me-2"></i> Solicitações
                     </h5>
                 </div>
 
@@ -55,11 +55,12 @@
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col" class="text-center" style="width: 20%">Informações Detalhadas</th>
+                                    <th scope="col" class="text-center" style="width: 15%">Solicitante
                                     </th>
                                     <th scope="col" class="text-center" style="width: 20%">Grupo</th>
-                                    <th scope="col" class="text-center" style="width: 20%">Transporte</th>
+                                    <th scope="col" class="text-center" style="width: 15%">Transporte</th>
                                     <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
-                                    <th scope="col" class="text-center" style="width: 20%">Ação
+                                    <th scope="col" class="text-center" style="width: 10%">Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +71,11 @@
                                                 class="btn btn-outline-primary btn-sm">
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </a>
+                                        </td>
+                                        <td class="text-wrap text-center">
+                                            <span
+                                                class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
+
                                         </td>
                                         <td class="text-wrap text-center">
                                             @if ($solicitacao->informacoesGrupo)
@@ -102,7 +108,6 @@
                                                 {{ $status }}
                                             </span>
                                         </td>
-
                                         <td class="text-wrap text-center">
                                             <a title="cancelar" href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button"
                                                 class="btn btn-outline-danger btn-sm">

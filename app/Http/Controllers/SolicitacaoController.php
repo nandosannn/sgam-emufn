@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\GrupoMusical;
 use App\Models\Solicitacao;
 use App\Models\TransporteVeiculos;
 use Illuminate\Http\Request;
@@ -73,12 +74,26 @@ class SolicitacaoController extends Controller
             $query->where('id', Auth::id());
         });
 
-        if($request->filled('nstatus_filtro')){
+        if($request->filled('status_filtro')){
             $q->where('status', 'like', '%' . $request->status_filtro . '%');
         }
 
         $solicitacoes = $q->paginate(8);
 
         return view('solicitacoes.acompanhar_solicitacao', compact('solicitacoes'));
+    }
+
+    public function solicitacoesAcompanharCoord(Request $request){
+        $q = Solicitacao::whereHas('informacoesGrupo.grupo.coordenador.user', function ($query) {
+            $query->where('id', Auth::id());
+        });
+
+        if($request->filled('status_filtro')){
+            $q->where('status', 'like', '%' . $request->status_filtro . '%');
+        }
+
+        $solicitacoes = $q->paginate(8);
+        return view('solicitacoes.acompanhar_coord', compact('solicitacoes'));
+
     }
 }

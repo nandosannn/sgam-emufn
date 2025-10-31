@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
     Route::post('solicitacoes/store', [SolicitacaoController::class, 'store'])->name('store.silicitacoes');
     Route::get('solicicoordenador/abertas', [SolicitacaoController::class, 'solicitacoesAbertas'])->name('abertas.solicitacoes');
+    Route::get('solicicoordenador/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanharCoord'])->name('acompanharcoord.solicitacoes');
     Route::get('solicitante/solicitacoes/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanhar'])->name('solicitanteabertas.solicitacoes');
     Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
     Route::get('solicitacoes/informacoes/{solicitacao}', [SolicitacaoController::class, 'informacoesSolicitacao'])->name('informacoes.solicitacoes');

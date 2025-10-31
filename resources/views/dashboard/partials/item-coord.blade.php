@@ -36,8 +36,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('index.solicitacoes') }}"
-                class="nav-link {{ Request::routeIs('index.solicitacoes') ? 'active' : '' }}">
+            <a href="{{ route('acompanharcoord.solicitacoes') }}"
+                class="nav-link {{ Request::routeIs('acompanharcoord.solicitacoes') ? 'active' : '' }}">
                 <i class="bi bi-circle-fill"></i>
                 <p class="font-li">Acompanhar <br> Solicitações</p>
             </a>
