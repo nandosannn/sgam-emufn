@@ -82,7 +82,7 @@
                             </td>
                             <td class="text-center text-wrap">
                                 @if ($solicitacao->informacoesGrupo)
-                                <a href="#" type="button" class="btn btn-outline-primary btn-sm">
+                                <a href="{{ route('confirmar.transporte', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
                                     Confirmar transporte
                                 </a>
                                 @elseif($solicitacao->transporte)

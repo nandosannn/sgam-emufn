@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\SolicitacaoController;
+use App\Http\Controllers\TransporteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,6 @@ Route::middleware(['auth'])->group(function(){
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
     Route::delete('grupos/{grupo}', [GrupoController::class, 'destroy'])->name('destroy.grupos');
 
-
     Route::get('eventos', [EventoController::class, 'index'])->name('index.eventos');
     Route::get('eventos/create', [EventoController::class, 'create'])->name('create.eventos');
     Route::post('eventos/store', [EventoController::class, 'store'])->name('store.eventos');
@@ -45,6 +45,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('solicitante/solicitacoes/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanhar'])->name('solicitanteabertas.solicitacoes');
     Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
     Route::get('solicitacoes/informacoes/{solicitacao}', [SolicitacaoController::class, 'informacoesSolicitacao'])->name('informacoes.solicitacoes');
+
+    Route::get('solicitante/confirmar/transporte/{solicitacao}', [TransporteController::class, 'confirmarTransporte'])->name('confirmar.transporte');
+
+
 
 });
 
