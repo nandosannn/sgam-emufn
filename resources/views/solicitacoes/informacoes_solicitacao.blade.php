@@ -16,16 +16,39 @@
         @if ($solicitacao->informacoesGrupo)
             @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
             @role('coordenador')
-                <form action="{{route('cancelar.grupo',  $solicitacao)}}" method="POST">
-                    @method('PUT')
-                    @csrf
-                    @include('solicitacoes.parts.card_alterar_status', ['solicitacao' => $solicitacao])
-                </form>
+                @unlessrole('admin')
+                    <form action="{{ route('cancelar.grupo', $solicitacao) }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        @include('solicitacoes.parts.card_alterar_status_coordenador', [
+                            'solicitacao' => $solicitacao,
+                        ])
+                    </form>
+                @endunlessrole
             @endrole
         @endif
+
         @if ($solicitacao->transporte)
             @include('solicitacoes.parts.card_transporte', ['solicitacao' => $solicitacao])
+            @unlessrole('admin')
+                <form action="{{ route('cancelar.solicitacoes', $solicitacao) }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    @include('solicitacoes.parts.card_alterar_status_solicitante', [
+                        'solicitacao' => $solicitacao,
+                    ])
+                </form>
+            @endunlessrole
         @endif
+        @role('admin')
+            <form action="{{ route('cancelaradmin.solicitacoes', $solicitacao) }}" method="POST">
+                @method('PUT')
+                @csrf
+                @include('solicitacoes.parts.card_alterar_status_admin', [
+                    'solicitacao' => $solicitacao,
+                ])
+            </form>
+        @endrole
     </div>
     @vite('resources/css/app.css')
 @endsection

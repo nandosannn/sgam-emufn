@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
     Route::post('solicitacoes/store', [SolicitacaoController::class, 'store'])->name('store.silicitacoes');
     Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
+    Route::put('solicitacoes/cancelar/{solicitacao}', [SolicitacaoController::class, 'cancelarSolicitacaoAdmin'])->name('cancelaradmin.solicitacoes');
 
 
     Route::get('solicicoordenador/abertas', [SolicitacaoController::class, 'solicitacoesAbertas'])->name('abertas.solicitacoes');
@@ -49,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('solicitante/informacoes/{solicitacao}', [SolicitacaoController::class, 'informacoesSolicitacao'])->name('informacoes.solicitacoes');
     Route::get('solicitante/solicitacoes/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanhar'])->name('solicitanteabertas.solicitacoes');
+    Route::put('solicitante/cancelar/{solicitacao}', [SolicitacaoController::class, 'cancelarSolicitacao'])->name('cancelar.solicitacoes');
 
 
     Route::get('solicitante/confirmar/transporte/{solicitacao}', [TransporteController::class, 'confirmarTransporte'])->name('confirmar.transporte');
