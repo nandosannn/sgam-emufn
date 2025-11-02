@@ -11,12 +11,13 @@ class SolicitacaoTransporte extends Model
     protected $fillable = [
         'status',
         'descricao',
+        'veiculo_id',
         'horarioIda',
         'horarioVolta'
     ];
 
     public function veiculos(){
-        return $this->belongsToMany(Veiculos::class, 'transporte_veiculos', 'solicitacao_transporte_id', 'veiculo_id');
+        return $this->belongsTo(Veiculos::class, 'veiculo_id', 'id');
     }
 
     public function solicitacao(){

@@ -154,7 +154,6 @@ class UserController extends Controller
                 $coordenador->save();
             }
             $user->removeRole('coordenador');
-
             $grupos = GrupoMusical::where('coordenador_id', $coordenador->id)->get();
             $secretaria = User::where('cpf', 'admin')->first();
 

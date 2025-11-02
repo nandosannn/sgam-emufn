@@ -21,6 +21,6 @@ class Veiculos extends Model
     }
 
     public function solicitacaoTransporte(){
-        return $this->belongsToMany(SolicitacaoTransporte::class, 'transporte_veiculos', 'veiculo_id', 'solicitacao_transporte_id');
+        return $this->belongsTo(SolicitacaoTransporte::class, 'veiculo_id', 'id');
     }
 }

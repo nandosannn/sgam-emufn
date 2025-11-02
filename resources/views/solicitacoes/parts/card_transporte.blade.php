@@ -4,31 +4,29 @@
     </div>
 
     <div class="card-body">
-        @foreach ($solicitacao->transporte->veiculos as $veiculo)
         <div class="row">
             <div class="mb-3 col-6">
                 <label for="nome" class="form-label">Nome do Motorista</label>
                 <input readonly type="text" name="" class="informacoes-input form-control" id=""
-                    value="{{ $veiculo->motorista->nome }}">
+                    value="{{ $solicitacao->transporte->veiculos->motorista->nome_motorista }}">
             </div>
             <div class="mb-3 col-6">
                 <label for="user_id" class="form-label">Telefone</label>
                 <input readonly type="text" class="informacoes-input form-control text-sm"
-                    value="{{ $veiculo->motorista->telefone }}">
+                    value="{{ $solicitacao->transporte->veiculos->motorista->telefone }}">
             </div>
         </div>
         <div class="row">
             <div class="mb-3 col-6">
-                <label for="nome" class="form-label">Placa do Veículo</label>
+                <label for="nome" class="form-label">Placa do veiculo</label>
                 <input readonly type="text" name="" class="informacoes-input form-control" id=""
-                    value="{{ $veiculo->motorista->nome }}">
+                    value="{{ $solicitacao->transporte->veiculos->placa }}">
             </div>
             <div class="mb-3 col-6">
                 <label for="user_id" class="form-label">Cor do Veículo</label>
                 <input readonly type="text" class="informacoes-input form-control text-sm"
-                    value="{{ $veiculo->cor }}">
+                    value="{{ $solicitacao->transporte->veiculos->cor}}">
             </div>
         </div>
-        @endforeach
     </div>
 </div>

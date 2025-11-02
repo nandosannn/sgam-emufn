@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id('id');
             $table->string('status', 50);
             $table->string('descricao', 100);
-            $table->dateTime('horarioIda');
-            $table->dateTime('horarioVolta');
             $table->timestamps();
         });
     }
