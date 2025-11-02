@@ -81,7 +81,7 @@
                                 @endif
                             </td>
                             <td class="text-center text-wrap">
-                                @if ($solicitacao->informacoesGrupo)
+                                @if ($solicitacao->informacoesGrupo && !$solicitacao->transporte)
                                 <a href="{{ route('confirmar.transporte', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
                                     Confirmar transporte
                                 </a>

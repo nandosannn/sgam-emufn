@@ -48,8 +48,5 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('solicitante/confirmar/transporte/{solicitacao}', [TransporteController::class, 'confirmarTransporte'])->name('confirmar.transporte');
     Route::post('solicitante/adicionar/transporte/{solicitacao}', [TransporteController::class, 'adicionarTransporte'])->name('adicionar.transporte');
-
-
-
 });
 
