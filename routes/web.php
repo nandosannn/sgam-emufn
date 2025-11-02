@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
 
     Route::get('users', [UserController::class, 'index'])->name('index.users');
@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('grupos/{grupo}', [GrupoController::class, 'edit'])->name('edit.grupos');
     Route::put('grupos/{grupo}', [GrupoController::class, 'update'])->name('update.grupos');
     Route::delete('grupos/{grupo}', [GrupoController::class, 'destroy'])->name('destroy.grupos');
+    Route::put('solicicoordenador/cancelar/grupo/{solicitacao}', [GrupoController::class, 'cancelarGrupo'])->name('cancelar.grupo');
 
     Route::get('eventos', [EventoController::class, 'index'])->name('index.eventos');
     Route::get('eventos/create', [EventoController::class, 'create'])->name('create.eventos');
@@ -40,13 +41,16 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('solicitacoes/create/{evento}', [SolicitacaoController::class, 'create'])->name('create.silicitacoes');
     Route::post('solicitacoes/store', [SolicitacaoController::class, 'store'])->name('store.silicitacoes');
+    Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
+
+
     Route::get('solicicoordenador/abertas', [SolicitacaoController::class, 'solicitacoesAbertas'])->name('abertas.solicitacoes');
     Route::get('solicicoordenador/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanharCoord'])->name('acompanharcoord.solicitacoes');
+
+    Route::get('solicitante/informacoes/{solicitacao}', [SolicitacaoController::class, 'informacoesSolicitacao'])->name('informacoes.solicitacoes');
     Route::get('solicitante/solicitacoes/acompanhar', [SolicitacaoController::class, 'solicitacoesAcompanhar'])->name('solicitanteabertas.solicitacoes');
-    Route::get('solicitacoes', [SolicitacaoController::class, 'index'])->name('index.solicitacoes');
-    Route::get('solicitacoes/informacoes/{solicitacao}', [SolicitacaoController::class, 'informacoesSolicitacao'])->name('informacoes.solicitacoes');
+
 
     Route::get('solicitante/confirmar/transporte/{solicitacao}', [TransporteController::class, 'confirmarTransporte'])->name('confirmar.transporte');
     Route::post('solicitante/adicionar/transporte/{solicitacao}', [TransporteController::class, 'adicionarTransporte'])->name('adicionar.transporte');
 });
-

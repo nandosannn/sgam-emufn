@@ -57,7 +57,7 @@ class GrupoController extends Controller
     public function edit(GrupoMusical $grupo)
     {
         $grupo->load('coordenador');
-        $coordenadores = CoordenadorGrupo::with('user')->get();
+        $coordenadores = CoordenadorGrupo::with('user')->where('ativo', true)->get();
         return view('grupos.edit', compact('grupo', 'coordenadores'));
     }
 
@@ -175,7 +175,7 @@ class GrupoController extends Controller
                 'informacoes_instrumentos' => $request->informacoes_instrumentos,
             ]);
 
-            if($grupoConfirmado){
+            if ($grupoConfirmado) {
                 $solicitacao = Solicitacao::find($request->solicitacao_id);
                 $solicitacao->status = 'Aguardando confirmação do transporte';
                 $solicitacao->save();
@@ -183,5 +183,25 @@ class GrupoController extends Controller
             }
         }
         return redirect()->route('abertas.solicitacoes')->with('error', 'Grupo não foi confirmado!');
+    }
+
+    public function cancelarGrupo(Request $request, Solicitacao $solicitacao)
+    {
+        $request->validate([
+            'status' => 'required|string|max:255'
+        ]);
+
+        if ($request->status === 'Cancelar grupo') {
+            $solicitacao->status = 'Aguardando disponibilidade de grupo';
+            $solicitacao->informacoes_transporte_id = null;
+
+            $grupo = InformacoesGrupo::where('solicitacao_id', $solicitacao->id)->first();
+            if ($grupo) {
+                $grupo->delete();
+            }
+            $solicitacao->save();
+        }
+
+        return redirect()->route('abertas.solicitacoes')->with('status', 'Participação do grupo cancelada com sucesso');
     }
 }
