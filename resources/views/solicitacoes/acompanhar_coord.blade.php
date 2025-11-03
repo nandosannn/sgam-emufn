@@ -55,12 +55,13 @@
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col" class="text-center" style="width: 20%">Informações Detalhadas</th>
+                                    <th scope="col" style="width: 10%">Data do Evento</th>
                                     <th scope="col" class="text-center" style="width: 15%">Solicitante
                                     </th>
                                     <th scope="col" class="text-center" style="width: 20%">Grupo</th>
                                     <th scope="col" class="text-center" style="width: 15%">Transporte</th>
                                     <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
-                                    <th scope="col" class="text-center" style="width: 10%">Ação</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,6 +73,7 @@
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </a>
                                         </td>
+                                        <td class="text-wrap">{{ \Carbon\Carbon::parse($solicitacao->evento->data)->format('d/m/Y H:i') }}</td>
                                         <td class="text-wrap text-center">
                                             <span
                                                 class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
@@ -108,12 +110,6 @@
                                             <span class="badge rounded-pill px-3 py-2 {{ $classeBadge }}">
                                                 {{ $status }}
                                             </span>
-                                        </td>
-                                        <td class="text-wrap text-center">
-                                            <a title="cancelar grupo" href="{{ route('informacoes.solicitacoes', $solicitacao) }}" type="button"
-                                                class="btn btn-outline-danger btn-sm">
-                                                <i class="bi bi-x-circle-fill"></i>
-                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
