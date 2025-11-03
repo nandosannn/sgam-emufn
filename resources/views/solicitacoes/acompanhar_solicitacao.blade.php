@@ -101,7 +101,7 @@
                                                     class="bg-success border-success badge rounded-pill px-3 py-2 text-white">Confirmado</span>
                                             @elseif($solicitacao->status == 'Solicitação cancelada por falta de transporte')
                                                 <span
-                                                    class="bg-danger border-danger badge rounded-pill px-3 py-2 text-white">Cancelado</span>
+                                                    class="bg-danger border-danger badge rounded-pill px-3 py-2 text-white">Indisponibilidade de Transporte</span>
                                             @else
                                                 <span class="text-muted">Nenhum grupo para transportar</span>
                                             @endif
