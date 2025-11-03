@@ -7,11 +7,8 @@
             <label for="status" class="form-label">Grupo</label>
             <select class="form-select" name="status" id="status">
                 <option value="">Selecione</option>
-                <option value="Cancelar solicitacao" {{ old('status') == 'Cancelar solicitacao' ? 'selected' : '' }}>
-                    Cancelar solicitacao
-                </option>
-                <option value="Cancelar transporte" {{ old('status') == 'Cancelar transporte' ? 'selected' : '' }}>
-                    Cancelar transporte
+                <option value="Cancelar grupo" {{ old('status') == 'Cancelar grupo' ? 'selected' : '' }}>
+                    Cancelar grupo
                 </option>
             </select>
         </div>

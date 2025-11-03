@@ -10,9 +10,11 @@
                 <option value="Cancelar solicitacao" {{ old('status') == 'Cancelar solicitacao' ? 'selected' : '' }}>
                     Cancelar solicitacao
                 </option>
+                @if ($solicitacao->transporte)
                 <option value="Cancelar transporte" {{ old('status') == 'Cancelar transporte' ? 'selected' : '' }}>
                     Cancelar transporte
                 </option>
+                @endif
             </select>
         </div>
     </div>

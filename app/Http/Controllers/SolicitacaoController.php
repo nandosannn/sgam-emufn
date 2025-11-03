@@ -108,7 +108,7 @@ class SolicitacaoController extends Controller
         ]);
 
         if ($request->status === 'Cancelar solicitacao') {
-            $solicitacao->status = 'Cancelado';
+            $solicitacao->status = 'Cancelado pelo solicitante';
             $solicitacao->informacoes_transporte_id = null;
 
             $grupo = InformacoesGrupo::where('solicitacao_id', $solicitacao->id)->first();
