@@ -53,11 +53,10 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col" class="text-center" style="width: 20%">Informações Detalhadas</th>
-                            <th scope="col" class="text-center" style="width: 20%">Solicitante
-                            </th>
+                            <th scope="col" style="width: 10%">Data</th>
+                            <th scope="col" class="text-center" style="width: 20%">Solicitante</th>
                             <th scope="col" class="text-center" style="width: 20%">Grupo</th>
-                            <th scope="col" class="text-center" style="width: 20%">Transporte</th>
-                            <th scope="col" class="text-center" style="width: 20%">Status Solicitação</th>
+                            <th scope="col" class="text-center" style="width: 30%">Status Solicitação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,21 +67,18 @@
                                     Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                 </a>
                             </td>
+                            <td class="text-wrap">{{ \Carbon\Carbon::parse($solicitacao->evento->data)->format('d/m/Y H:i') }}</td>
                             <td class="text-wrap text-center">
                                 <span class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
 
                             </td>
                             <td class="text-wrap text-center">
+                                @if($solicitacao->status == '')
+
+                                @endif
                                 <a href="{{ route('informacoes.grupos', $solicitacao) }}" type="button" class="btn btn-outline-primary btn-sm">
                                     Confirmar Grupo
                                 </a>
-                            </td>
-                            <td class="text-center text-wrap">
-                                @if ($solicitacao->transporte)
-                                <span class="text-black">Transporte Confirmado</span>
-                                @else
-                                <span class="text-muted">Nenhum transporte confirmado</span>
-                                @endif
                             </td>
                             <td class="text-center text-wrap">
                                 @php

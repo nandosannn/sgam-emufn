@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id('id');
             $table->string('status', 50);
             $table->string('descricao', 100);
+            $table->foreignId('veiculo_id')->constrained('veiculos')->cascadeOnDelete();
+            $table->dateTime('horarioIda');
+            $table->dateTime('horarioVolta');
             $table->timestamps();
         });
     }
