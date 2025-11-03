@@ -73,25 +73,33 @@
                                                 Solicitação Evento 0{{ $solicitacao->id }}/{{ date('Y') }}
                                             </a>
                                         </td>
-                                        <td class="text-wrap">{{ \Carbon\Carbon::parse($solicitacao->evento->data)->format('d/m/Y H:i') }}</td>
+                                        <td class="text-wrap">
+                                            {{ \Carbon\Carbon::parse($solicitacao->evento->data)->format('d/m/Y H:i') }}
+                                        </td>
                                         <td class="text-wrap text-center">
                                             <span
                                                 class="text-black">{{ $solicitacao->evento->user->nome . ' ' . $solicitacao->evento->user->sobrenome }}</span>
 
                                         </td>
                                         <td class="text-wrap text-center">
-                                            @if ($solicitacao->informacoesGrupo)
+                                            @if ($solicitacao->informacoesGrupo && $solicitacao->status != 'Solicitação cancelada por falta de grupo')
                                                 <span
                                                     class="bg-success border-success badge rounded-pill px-3 py-2 text-white">Confirmado:
                                                     {{ $solicitacao->informacoesGrupo->grupo->nome }}</span>
+                                            @elseif($solicitacao->status == 'Solicitação cancelada por falta de grupo')
+                                                <span
+                                                    class="bg-danger border-danger badge rounded-pill px-3 py-2 text-white">Indisponibilidade de Grupo</span>
                                             @else
                                                 <span class="text-muted">Nenhum grupo confirmado</span>
                                             @endif
                                         </td>
                                         <td class="text-center text-wrap">
-                                            @if ($solicitacao->transporte)
-                                                 <span
+                                            @if ($solicitacao->transporte && $solicitacao->status != 'Solicitação cancelada por falta de transporte')
+                                                <span
                                                     class="bg-success border-success badge rounded-pill px-3 py-2 text-white">Confirmado</span>
+                                            @elseif($solicitacao->status == 'Solicitação cancelada por falta de transporte')
+                                                <span
+                                                    class="bg-danger border-danger badge rounded-pill px-3 py-2 text-white">Cancelado</span>
                                             @else
                                                 <span class="text-muted">Nenhum transporte confirmado</span>
                                             @endif

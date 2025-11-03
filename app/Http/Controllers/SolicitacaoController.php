@@ -9,6 +9,7 @@ use App\Models\TransporteVeiculos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\InformacoesGrupo;
+use App\Models\SolicitacaoTransporte;
 
 class SolicitacaoController extends Controller
 {
@@ -57,7 +58,8 @@ class SolicitacaoController extends Controller
 
     public function informacoesSolicitacao(Solicitacao $solicitacao)
     {
-        return view('solicitacoes.informacoes_solicitacao', compact('solicitacao'));
+        $user = Auth::user();
+        return view('solicitacoes.informacoes_solicitacao', compact('solicitacao',  'user'));
     }
 
     public function solicitacoesAbertas(Request $request)
@@ -78,6 +80,8 @@ class SolicitacaoController extends Controller
             $query->where('id', Auth::id());
         });
 
+        $q->where('status', '!=', 'Concluido');
+
         if ($request->filled('status_filtro')) {
             $q->where('status', 'like', '%' . $request->status_filtro . '%');
         }
@@ -92,6 +96,8 @@ class SolicitacaoController extends Controller
         $q = Solicitacao::whereHas('informacoesGrupo.grupo.coordenador.user', function ($query) {
             $query->where('id', Auth::id());
         });
+
+        $q->where('status', '!=', 'Concluido');
 
         if ($request->filled('status_filtro')) {
             $q->where('status', 'like', '%' . $request->status_filtro . '%');
@@ -109,17 +115,16 @@ class SolicitacaoController extends Controller
 
         if ($request->status === 'Cancelar solicitacao') {
             $solicitacao->status = 'Cancelado pelo solicitante';
-            $solicitacao->informacoes_transporte_id = null;
-
-            $grupo = InformacoesGrupo::where('solicitacao_id', $solicitacao->id)->first();
-            if ($grupo) {
-                $grupo->delete();
-            }
             $solicitacao->save();
         } elseif ($request->status === 'Cancelar transporte') {
-            $solicitacao->status = 'Aguardando disponibilidade de grupo';
+            $solicitacao->status = 'Aguardando confirmação do transporte';
+            $transporte = SolicitacaoTransporte::find($solicitacao->informacoes_transporte_id);
             $solicitacao->informacoes_transporte_id = null;
             $solicitacao->save();
+            if($transporte){
+                $transporte->delete();
+            }
+
         }
 
         return redirect()->route('solicitanteabertas.solicitacoes')->with('status', 'Alteração de status feita com sucesso');
@@ -132,10 +137,10 @@ class SolicitacaoController extends Controller
         ]);
 
         if ($request->status === 'Cancelar solicitacao por falta de transporte') {
-            $solicitacao->status = 'Solicitacão cancelada por falta de transporte';
+            $solicitacao->status = 'Solicitação cancelada por falta de transporte';
             $solicitacao->save();
         } elseif ($request->status === 'Cancelar solicitacao por falta de grupo') {
-            $solicitacao->status = 'Solicitacão cancelada por falta de grupo';
+            $solicitacao->status = 'Solicitação cancelada por falta de grupo';
             $solicitacao->save();
         } elseif ($request->status === 'Concluir solicitacao') {
             $solicitacao->status = 'Concluido';
