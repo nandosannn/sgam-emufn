@@ -16,7 +16,6 @@
         @if ($solicitacao->informacoesGrupo)
             @include('solicitacoes.parts.card_grupo', ['solicitacao' => $solicitacao])
             @role('coordenador')
-                @unlessrole('admin')
                     <form action="{{ route('cancelar.grupo', $solicitacao) }}" method="POST">
                         @method('PUT')
                         @csrf
@@ -24,13 +23,11 @@
                             'solicitacao' => $solicitacao,
                         ])
                     </form>
-                @endunlessrole
             @endrole
         @endif
 
         @if ($solicitacao->transporte)
             @include('solicitacoes.parts.card_transporte', ['solicitacao' => $solicitacao])
-            @unlessrole('admin')
                 <form action="{{ route('cancelar.solicitacoes', $solicitacao) }}" method="POST">
                     @method('PUT')
                     @csrf
@@ -38,7 +35,6 @@
                         'solicitacao' => $solicitacao,
                     ])
                 </form>
-            @endunlessrole
         @endif
         @role('admin')
             <form action="{{ route('cancelaradmin.solicitacoes', $solicitacao) }}" method="POST">
